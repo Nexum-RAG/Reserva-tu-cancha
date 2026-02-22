@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pico Deportes – Reservá tu Cancha</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #0d1b2e;
+    --azul-medio: #132338;
+    --azul-card: #162840;
+    --azul-borde: #1e3450;
+    --rojo: #e8192c;
+    --rojo-hover: #ff2235;
+    --blanco: #f0f4f8;
+    --texto-suave: #6b88a4;
+    --texto-medio: #9ab5cc;
+    --verde-neon: #39ff14;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--azul);
+    color: var(--blanco);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--azul-borde);
+    position: sticky;
+    top: 0;
+    background: rgba(13,27,46,0.97);
+    backdrop-filter: blur(16px);
+    z-index: 100;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 44px; height: 44px;
+    background: var(--rojo);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -1px;
+    color: white;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-text .main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blanco);
+  }
+
+  .logo-text .sub {
+    font-size: 10px;
+    color: var(--texto-suave);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .badge-online {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--texto-suave);
+    background: var(--azul-card);
+    border: 1px solid var(--azul-borde);
+    padding: 8px 14px;
+    border-radius: 20px;
+  }
+
+  .dot {
+    width: 7px; height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+    50% { opacity: 0.8; transform: scale(0.9); box-shadow: 0 0 0 4px rgba(34,197,94,0); }
+  }
+
+  /* HERO */
+  .hero {
+    padding: 56px 32px 40px;
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'P';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 280px;
+    color: rgba(232,25,44,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,25,44,0.1);
+    border: 1px solid rgba(232,25,44,0.2);
+    color: var(--rojo);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(56px, 10vw, 104px);
+    line-height: 0.88;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 .rojo { color: var(--rojo); }
+
+  .hero p {
+    color: var(--texto-medio);
+    font-size: 15px;
+    max-width: 400px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--rojo) 0%, var(--azul-borde) 60%, transparent 100%);
+    max-width: 960px;
+    margin: 0 auto 40px;
+  }
+
+  /* STEPS */
+  .steps {
+    display: flex;
+    gap: 6px;
+    padding: 0 32px;
+    max-width: 960px;
+    margin: 0 auto 44px;
+  }
+
+  .step {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--azul-borde);
+    font-size: 11px;
+    color: var(--texto-suave);
+    text-align: center;
+    transition: all 0.3s;
+    background: var(--azul-card);
+  }
+
+  .step.active {
+    border-color: var(--rojo);
+    color: var(--rojo);
+    background: rgba(232,25,44,0.07);
+  }
+
+  .step.done {
+    border-color: #1e3450;
+    color: #2d4f70;
+    background: transparent;
+  }
+
+  .step-num {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 1px;
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  /* DEPORTE */
+  .deporte-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 48px;
+    max-width: 500px;
+  }
+
+  .deporte-card {
+    background: var(--azul-card);
+    border: 1px solid var(--azul-borde);
+    border-radius: 14px;
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .deporte-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(232,25,44,0.05) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .deporte-card:hover { border-color: #2a4a6a; transform: translateY(-3px); }
+  .deporte-card:hover::after { opacity: 1; }
+
+  .deporte-card.selected {
+    border-color: var(--rojo);
+    background: rgba(232,25,44,0.08);
+  }
+
+  .deporte-card.selected::after { opacity: 1; }
+
+  .deporte-card .emoji { font-size: 40px; display: block; margin-bottom: 10px; }
+  .deporte-card .nombre {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .deporte-card .canchas { font-size: 12px; color: var(--texto-suave); margin-top: 5px; }
+
+  /* CANCHA */
+  .cancha-section { margin-bottom: 48px; display: none; }
+
+  .cancha-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .cancha-card {
+    background: var(--azul-card);
+    border: 1px solid var(--azul-borde);
+    border-radius: 12px;
+    padding: 22px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .cancha-card:hover { border-color: #2a4a6a; transform: translateY(-2px); }
+  .cancha-card.selected { border-color: var(--rojo); background: rgba(232,25,44,0.07); }
+
+  .cancha-card .cancha-nombre {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .cancha-card .cancha-tipo { font-size: 12px; color: var(--texto-suave); line-height: 1.5; }
+
+  .cancha-card .cancha-precio {
+    margin-top: 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--rojo);
+    letter-spacing: 0px;
+  }
+
+  .cancha-card .cancha-precio span {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: var(--texto-suave);
+    font-weight: 400;
+  }
+
+  .tag-cancha {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .tag-futbol { background: rgba(57,255,20,0.1); color: var(--verde-neon); border: 1px solid rgba(57,255,20,0.2); }
+  .tag-padel { background: rgba(232,25,44,0.1); color: var(--rojo); border: 1px solid rgba(232,25,44,0.2); }
+
+  /* NOTA FUTBOL 8 */
+  .nota-division {
+    background: rgba(57,255,20,0.05);
+    border: 1px solid rgba(57,255,20,0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: rgba(57,255,20,0.8);
+    margin-bottom: 16px;
+    display: none;
+  }
+
+  /* FECHA */
+  .fecha-section { margin-bottom: 48px; display: none; }
+
+  .fecha-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .fecha-scroll::-webkit-scrollbar { display: none; }
+
+  .fecha-chip {
+    flex-shrink: 0;
+    background: var(--azul-card);
+    border: 1px solid var(--azul-borde);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 68px;
+  }
+
+  .fecha-chip:hover { border-color: #2a4a6a; }
+  .fecha-chip.selected { border-color: var(--rojo); background: rgba(232,25,44,0.08); }
+
+  .fecha-chip .dia-nombre { font-size: 9px; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+  .fecha-chip .dia-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--blanco);
+  }
+  .fecha-chip .mes { font-size: 9px; color: var(--texto-suave); letter-spacing: 1px; text-transform: uppercase; }
+  .fecha-chip.selected .dia-num { color: var(--rojo); }
+
+  /* HORARIOS */
+  .horario-section { margin-bottom: 48px; display: none; }
+
+  .leyenda {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 16px;
+    font-size: 11px;
+    color: var(--texto-suave);
+    align-items: center;
+  }
+
+  .leyenda-item { display: flex; align-items: center; gap: 6px; }
+  .leyenda-dot { width: 10px; height: 10px; border-radius: 3px; }
+  .leyenda-dot.libre { background: var(--azul-card); border: 1px solid var(--azul-borde); }
+  .leyenda-dot.ocupado { background: rgba(20,30,40,0.5); border: 1px dashed #1e3450; }
+  .leyenda-dot.sel { background: rgba(232,25,44,0.3); border: 1px solid var(--rojo); }
+
+  .horario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 10px;
+  }
+
+  .horario-chip {
+    background: var(--azul-card);
+    border: 1px solid var(--azul-borde);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .horario-chip:hover { border-color: #2a4a6a; transform: translateY(-1px); }
+
+  .horario-chip.selected {
+    border-color: var(--rojo);
+    background: rgba(232,25,44,0.08);
+    color: var(--rojo);
+  }
+
+  .horario-chip.ocupado {
+    opacity: 0.25;
+    cursor: not-allowed;
+    text-decoration: line-through;
+    font-size: 12px;
+    transform: none !important;
+  }
+
+  .horario-chip .duracion { font-size: 10px; color: var(--texto-suave); margin-top: 3px; font-weight: 400; }
+
+  /* FORM */
+  .form-section { margin-bottom: 48px; display: none; }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 10px;
+    color: var(--texto-suave);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  input {
+    background: var(--azul-card);
+    border: 1px solid var(--azul-borde);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: var(--blanco);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus { border-color: var(--rojo); }
+  input::placeholder { color: #2d4f70; }
+
+  /* RESUMEN */
+  .resumen-card {
+    background: var(--azul-card);
+    border: 1px solid var(--azul-borde);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  .resumen-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--texto-suave);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .resumen-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--azul-borde);
+    font-size: 14px;
+  }
+
+  .resumen-row:last-child { border-bottom: none; }
+  .resumen-row .label { color: var(--texto-suave); }
+  .resumen-row .value { font-weight: 600; }
+
+  .resumen-row.total .value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--rojo);
+    letter-spacing: 1px;
+  }
+
+  /* BTN */
+  .btn-reservar {
+    width: 100%;
+    background: var(--rojo);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: none;
+  }
+
+  .btn-reservar:hover { background: var(--rojo-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,25,44,0.3); }
+  .btn-reservar:active { transform: translateY(0); }
+
+  /* SUCCESS */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 80px 32px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .success-icon {
+    width: 80px; height: 80px;
+    background: rgba(232,25,44,0.1);
+    border: 2px solid var(--rojo);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin: 0 auto 28px;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .success-screen h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+
+  .success-screen p { color: var(--texto-medio); line-height: 1.7; margin-bottom: 8px; font-size: 15px; }
+
+  .success-detail {
+    background: var(--azul-card);
+    border: 1px solid var(--azul-borde);
+    border-radius: 12px;
+    padding: 22px;
+    margin: 28px 0;
+    text-align: left;
+  }
+
+  .success-detail .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--azul-borde);
+  }
+
+  .success-detail .row:last-child { border: none; }
+  .success-detail .row span:first-child { color: var(--texto-suave); }
+  .success-detail .row span:last-child { font-weight: 600; }
+
+  .whatsapp-note {
+    background: rgba(37,211,102,0.07);
+    border: 1px solid rgba(37,211,102,0.18);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #25d366;
+    margin-bottom: 24px;
+  }
+
+  .btn-nueva {
+    background: transparent;
+    border: 1px solid var(--azul-borde);
+    color: var(--texto-medio);
+    border-radius: 10px;
+    padding: 14px 32px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-nueva:hover { border-color: #2a4a6a; color: var(--blanco); }
+
+  @media (max-width: 600px) {
+    header { padding: 16px 20px; }
+    .hero { padding: 40px 20px 32px; }
+    .steps { padding: 0 20px; }
+    .container { padding: 0 20px 60px; }
+    .deporte-grid { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-icon">P</div>
+    <div class="logo-text">
+      <span class="main">Pico Deportes</span>
+      <span class="sub">Tandil · Reservas online</span>
+    </div>
+  </div>
+  <div class="badge-online"><div class="dot"></div>Sistema activo</div>
+</header>
+
+<div id="mainContent">
+  <div class="hero">
+    <div class="hero-tag">⚡ Reservas 24/7</div>
+    <h1>RESERVÁ<br>TU <span class="rojo">CANCHA</span></h1>
+    <p>Elegí el deporte, la cancha, el día y el horario. Te confirmamos la reserva por WhatsApp al instante.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="steps">
+    <div class="step active" id="step1"><span class="step-num">1</span>Deporte</div>
+    <div class="step" id="step2"><span class="step-num">2</span>Cancha</div>
+    <div class="step" id="step3"><span class="step-num">3</span>Fecha</div>
+    <div class="step" id="step4"><span class="step-num">4</span>Horario</div>
+    <div class="step" id="step5"><span class="step-num">5</span>Datos</div>
+  </div>
+
+  <div class="container">
+
+    <!-- DEPORTE -->
+    <div class="section-label">¿Qué querés jugar?</div>
+    <div class="deporte-grid">
+      <div class="deporte-card" onclick="selDeporte(this, 'Fútbol')">
+        <span class="emoji">⚽</span>
+        <div class="nombre">Fútbol</div>
+        <div class="canchas">3 canchas · F8 y F6</div>
+      </div>
+      <div class="deporte-card" onclick="selDeporte(this, 'Pádel')">
+        <span class="emoji">🏓</span>
+        <div class="nombre">Pádel</div>
+        <div class="canchas">3 canchas dobles · Interior</div>
+      </div>
+    </div>
+
+    <!-- CANCHA -->
+    <div class="cancha-section" id="canchaSection">
+      <div class="section-label">Elegí la cancha</div>
+      <div class="nota-division" id="notaDivision">
+        💡 Las canchas de Fútbol 8 se pueden dividir en dos canchas de Fútbol 6 simultáneas.
+      </div>
+      <div class="cancha-grid" id="canchaGrid"></div>
+    </div>
+
+    <!-- FECHA -->
+    <div class="fecha-section" id="fechaSection">
+      <div class="section-label">¿Cuándo querés jugar?</div>
+      <div class="fecha-scroll" id="fechaScroll"></div>
+    </div>
+
+    <!-- HORARIO -->
+    <div class="horario-section" id="horarioSection">
+      <div class="section-label">Seleccioná el horario</div>
+      <div class="leyenda">
+        <div class="leyenda-item"><div class="leyenda-dot libre"></div>Disponible</div>
+        <div class="leyenda-item"><div class="leyenda-dot ocupado"></div>Ocupado</div>
+        <div class="leyenda-item"><div class="leyenda-dot sel"></div>Seleccionado</div>
+      </div>
+      <div class="horario-grid" id="horarioGrid"></div>
+    </div>
+
+    <!-- DATOS -->
+    <div class="form-section" id="formSection">
+      <div class="section-label">Tus datos</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" id="inputNombre" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Apellido</label>
+          <input type="text" id="inputApellido" placeholder="Tu apellido">
+        </div>
+        <div class="form-group full">
+          <label>WhatsApp</label>
+          <input type="tel" id="inputWsp" placeholder="+54 9 11 0000 0000">
+        </div>
+      </div>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="resumen-card" id="resumenCard">
+      <h3>Resumen de reserva</h3>
+      <div class="resumen-row"><span class="label">Deporte</span><span class="value" id="r-deporte">-</span></div>
+      <div class="resumen-row"><span class="label">Cancha</span><span class="value" id="r-cancha">-</span></div>
+      <div class="resumen-row"><span class="label">Fecha</span><span class="value" id="r-fecha">-</span></div>
+      <div class="resumen-row"><span class="label">Horario</span><span class="value" id="r-horario">-</span></div>
+      <div class="resumen-row"><span class="label">Duración</span><span class="value">60 min</span></div>
+      <div class="resumen-row total"><span class="label">Total</span><span class="value" id="r-total">-</span></div>
+    </div>
+
+    <button class="btn-reservar" id="btnReservar" onclick="confirmarReserva()">CONFIRMAR RESERVA</button>
+
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="success-screen" id="successScreen">
+  <div class="success-icon">✓</div>
+  <h2>¡RESERVA<br>CONFIRMADA!</h2>
+  <p>Tu turno está reservado en <strong>Pico Deportes</strong>.<br>En instantes recibís la confirmación por WhatsApp.</p>
+
+  <div class="success-detail" id="successDetail"></div>
+
+  <div class="whatsapp-note">
+    📱 Confirmación enviada a tu WhatsApp
+  </div>
+
+  <button class="btn-nueva" onclick="nuevaReserva()">Hacer otra reserva</button>
+</div>
+
+<script>
+  const canchasPorDeporte = {
+    'Fútbol': [
+      { nombre: 'Cancha 1 — F8', tipo: 'Fútbol 8 · Césped sintético al aire libre\nSe puede dividir en 2 canchas de F6', precio: 14000, tag: 'futbol', esF8: true },
+      { nombre: 'Cancha 2 — F8', tipo: 'Fútbol 8 · Césped sintético al aire libre\nSe puede dividir en 2 canchas de F6', precio: 14000, tag: 'futbol', esF8: true },
+      { nombre: 'Cancha 3 — F8', tipo: 'Fútbol 8 · Césped sintético al aire libre\nSe puede dividir en 2 canchas de F6', precio: 14000, tag: 'futbol', esF8: true },
+      { nombre: 'C1 Lado A — F6', tipo: 'Fútbol 6 · Mitad de Cancha 1', precio: 8000, tag: 'futbol', esF8: false },
+      { nombre: 'C1 Lado B — F6', tipo: 'Fútbol 6 · Mitad de Cancha 1', precio: 8000, tag: 'futbol', esF8: false },
+      { nombre: 'C2 Lado A — F6', tipo: 'Fútbol 6 · Mitad de Cancha 2', precio: 8000, tag: 'futbol', esF8: false },
+      { nombre: 'C2 Lado B — F6', tipo: 'Fútbol 6 · Mitad de Cancha 2', precio: 8000, tag: 'futbol', esF8: false },
+      { nombre: 'C3 Lado A — F6', tipo: 'Fútbol 6 · Mitad de Cancha 3', precio: 8000, tag: 'futbol', esF8: false },
+      { nombre: 'C3 Lado B — F6', tipo: 'Fútbol 6 · Mitad de Cancha 3', precio: 8000, tag: 'futbol', esF8: false },
+    ],
+    'Pádel': [
+      { nombre: 'Pádel 1', tipo: 'Cancha doble · Cristal · Interior', precio: 7000, tag: 'padel' },
+      { nombre: 'Pádel 2', tipo: 'Cancha doble · Cristal · Interior', precio: 7000, tag: 'padel' },
+      { nombre: 'Pádel 3', tipo: 'Cancha doble · Cristal · Interior', precio: 7000, tag: 'padel' },
+    ]
+  };
+
+  const horariosOcupados = {
+    'Cancha 1 — F8': ['09:00','14:00','19:00'],
+    'Cancha 2 — F8': ['10:00','17:00','20:00'],
+    'Cancha 3 — F8': ['08:00','13:00','21:00'],
+    'C1 Lado A — F6': ['09:00','15:00'],
+    'C1 Lado B — F6': ['10:00','18:00'],
+    'C2 Lado A — F6': ['11:00','16:00'],
+    'C2 Lado B — F6': ['09:00','20:00'],
+    'C3 Lado A — F6': ['08:00','14:00'],
+    'C3 Lado B — F6': ['13:00','19:00'],
+    'Pádel 1': ['08:00','10:00','18:00','20:00'],
+    'Pádel 2': ['09:00','15:00','21:00'],
+    'Pádel 3': ['11:00','17:00','19:00'],
+  };
+
+  const horariosTodos = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'];
+
+  let sel = { deporte: null, cancha: null, canchaData: null, fecha: null, horario: null };
+
+  function selDeporte(el, deporte) {
+    document.querySelectorAll('.deporte-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    sel = { deporte, cancha: null, canchaData: null, fecha: null, horario: null };
+
+    const grid = document.getElementById('canchaGrid');
+    grid.innerHTML = '';
+
+    const nota = document.getElementById('notaDivision');
+    nota.style.display = deporte === 'Fútbol' ? 'block' : 'none';
+
+    canchasPorDeporte[deporte].forEach(c => {
+      const div = document.createElement('div');
+      div.className = 'cancha-card';
+      div.innerHTML = `
+        <div class="tag-cancha tag-${c.tag}">${c.tag === 'futbol' ? (c.esF8 ? 'FÚTBOL 8' : 'FÚTBOL 6') : 'PÁDEL'}</div>
+        <div class="cancha-nombre">${c.nombre}</div>
+        <div class="cancha-tipo">${c.tipo.replace('\n', '<br>')}</div>
+        <div class="cancha-precio">$${c.precio.toLocaleString()} <span>/ hora</span></div>
+      `;
+      div.onclick = () => selCancha(div, c);
+      grid.appendChild(div);
+    });
+
+    show('canchaSection');
+    hide('fechaSection'); hide('horarioSection'); hide('formSection'); hide('resumenCard');
+    document.getElementById('btnReservar').style.display = 'none';
+    updateSteps(2);
+    document.getElementById('canchaSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function selCancha(el, canchaData) {
+    document.querySelectorAll('.cancha-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    sel.cancha = canchaData.nombre;
+    sel.canchaData = canchaData;
+    sel.fecha = null; sel.horario = null;
+
+    const scroll = document.getElementById('fechaScroll');
+    scroll.innerHTML = '';
+    const dias = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    const meses = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+    const hoy = new Date();
+    for (let i = 0; i < 14; i++) {
+      const d = new Date(hoy);
+      d.setDate(hoy.getDate() + i);
+      const chip = document.createElement('div');
+      chip.className = 'fecha-chip';
+      if (i === 0) chip.innerHTML = `<div class="dia-nombre">Hoy</div><div class="dia-num">${d.getDate()}</div><div class="mes">${meses[d.getMonth()]}</div>`;
+      else if (i === 1) chip.innerHTML = `<div class="dia-nombre">Mañana</div><div class="dia-num">${d.getDate()}</div><div class="mes">${meses[d.getMonth()]}</div>`;
+      else chip.innerHTML = `<div class="dia-nombre">${dias[d.getDay()]}</div><div class="dia-num">${d.getDate()}</div><div class="mes">${meses[d.getMonth()]}</div>`;
+      chip.onclick = () => selFecha(chip, d);
+      scroll.appendChild(chip);
+    }
+
+    show('fechaSection');
+    hide('horarioSection'); hide('formSection'); hide('resumenCard');
+    document.getElementById('btnReservar').style.display = 'none';
+    updateSteps(3);
+    document.getElementById('fechaSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function selFecha(el, fecha) {
+    document.querySelectorAll('.fecha-chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    sel.fecha = `${dias[fecha.getDay()]} ${fecha.getDate()} de ${meses[fecha.getMonth()]}`;
+    sel.horario = null;
+
+    const grid = document.getElementById('horarioGrid');
+    grid.innerHTML = '';
+    const ocupados = horariosOcupados[sel.cancha] || [];
+    horariosTodos.forEach(h => {
+      const estaOcupado = ocupados.includes(h);
+      const chip = document.createElement('div');
+      chip.className = 'horario-chip' + (estaOcupado ? ' ocupado' : '');
+      chip.innerHTML = `${h}<div class="duracion">60 min</div>`;
+      if (!estaOcupado) chip.onclick = () => selHorario(chip, h);
+      grid.appendChild(chip);
+    });
+
+    show('horarioSection');
+    hide('formSection'); hide('resumenCard');
+    document.getElementById('btnReservar').style.display = 'none';
+    updateSteps(4);
+    document.getElementById('horarioSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function selHorario(el, horario) {
+    document.querySelectorAll('.horario-chip:not(.ocupado)').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    sel.horario = horario;
+
+    show('formSection');
+    show('resumenCard');
+    updateResumen();
+    document.getElementById('btnReservar').style.display = 'block';
+    updateSteps(5);
+    document.getElementById('formSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function updateResumen() {
+    document.getElementById('r-deporte').textContent = sel.deporte;
+    document.getElementById('r-cancha').textContent = sel.cancha;
+    document.getElementById('r-fecha').textContent = sel.fecha;
+    document.getElementById('r-horario').textContent = sel.horario + ' hs';
+    document.getElementById('r-total').textContent = '$' + sel.canchaData.precio.toLocaleString();
+  }
+
+  function confirmarReserva() {
+    const nombre = document.getElementById('inputNombre').value.trim();
+    const apellido = document.getElementById('inputApellido').value.trim();
+    const wsp = document.getElementById('inputWsp').value.trim();
+    if (!nombre || !apellido || !wsp) {
+      alert('Por favor completá todos tus datos para confirmar la reserva.');
+      return;
+    }
+    document.getElementById('mainContent').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+    document.getElementById('successDetail').innerHTML = `
+      <div class="row"><span>Nombre</span><span>${nombre} ${apellido}</span></div>
+      <div class="row"><span>Deporte</span><span>${sel.deporte}</span></div>
+      <div class="row"><span>Cancha</span><span>${sel.cancha}</span></div>
+      <div class="row"><span>Fecha</span><span>${sel.fecha}</span></div>
+      <div class="row"><span>Horario</span><span>${sel.horario} hs (60 min)</span></div>
+      <div class="row"><span>Total</span><span>$${sel.canchaData.precio.toLocaleString()}</span></div>
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function nuevaReserva() {
+    document.getElementById('successScreen').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    document.querySelectorAll('.deporte-card, .cancha-card, .fecha-chip, .horario-chip').forEach(c => c.classList.remove('selected'));
+    document.getElementById('inputNombre').value = '';
+    document.getElementById('inputApellido').value = '';
+    document.getElementById('inputWsp').value = '';
+    hide('canchaSection'); hide('fechaSection'); hide('horarioSection'); hide('formSection'); hide('resumenCard');
+    document.getElementById('btnReservar').style.display = 'none';
+    sel = { deporte: null, cancha: null, canchaData: null, fecha: null, horario: null };
+    updateSteps(1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function show(id) { document.getElementById(id).style.display = 'block'; }
+  function hide(id) { document.getElementById(id).style.display = 'none'; }
+
+  function updateSteps(active) {
+    for (let i = 1; i <= 5; i++) {
+      const s = document.getElementById('step' + i);
+      s.className = 'step' + (i === active ? ' active' : i < active ? ' done' : '');
+    }
+  }
+</script>
+</body>
+</html>
