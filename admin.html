@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pico Deportes — Panel Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #0a1628;
+    --azul-card: #0e1e35;
+    --azul-borde: #1a3050;
+    --rojo: #e8192c;
+    --rojo-hover: #ff2235;
+    --blanco: #eef2f7;
+    --texto-suave: #5a7a9a;
+    --texto-medio: #8aabcc;
+    --verde: #22c55e;
+    --amarillo: #f59e0b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--azul);
+    background-image: url('textura.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--blanco);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: rgba(8,16,30,0.88);
+    z-index: 0; pointer-events: none;
+  }
+
+  /* LOGIN */
+  #loginScreen {
+    position: fixed; inset: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    background-color: var(--azul);
+    background-image: url('textura.jpg');
+    background-size: cover;
+  }
+
+  #loginScreen::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(8,16,30,0.9);
+  }
+
+  .login-box {
+    position: relative; z-index: 1;
+    background: rgba(14,30,53,0.95);
+    border: 1px solid var(--azul-borde);
+    border-radius: 18px;
+    padding: 48px 40px;
+    width: 100%; max-width: 380px;
+    backdrop-filter: blur(20px);
+    text-align: center;
+  }
+
+  .login-box img {
+    width: 72px; height: 72px;
+    object-fit: contain; border-radius: 50%;
+    margin-bottom: 20px;
+  }
+
+  .login-box h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 28px;
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .login-box p {
+    font-size: 11px; color: var(--texto-suave);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .login-group {
+    display: flex; flex-direction: column;
+    gap: 7px; margin-bottom: 14px; text-align: left;
+  }
+
+  .login-group label {
+    font-size: 9px; color: var(--texto-suave);
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  }
+
+  .login-group input {
+    background: rgba(10,22,40,0.8);
+    border: 1px solid var(--azul-borde);
+    border-radius: 8px; padding: 13px 16px;
+    color: var(--blanco); font-family: 'Barlow', sans-serif;
+    font-size: 14px; outline: none;
+    transition: border-color 0.2s; font-weight: 300;
+  }
+
+  .login-group input:focus { border-color: var(--rojo); }
+
+  .login-error {
+    font-size: 12px; color: var(--rojo);
+    margin-bottom: 12px; display: none;
+  }
+
+  .btn-login {
+    width: 100%; background: var(--rojo); color: white;
+    border: none; border-radius: 8px; padding: 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 800;
+    letter-spacing: 4px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s; margin-top: 8px;
+  }
+
+  .btn-login:hover { background: var(--rojo-hover); transform: translateY(-1px); }
+
+  /* MAIN APP */
+  #appScreen { display: none; position: relative; z-index: 1; }
+
+  /* HEADER */
+  header {
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--azul-borde);
+    position: sticky; top: 0;
+    background: rgba(8,16,30,0.95);
+    backdrop-filter: blur(20px); z-index: 100;
+  }
+
+  .logo-wrap { display: flex; align-items: center; gap: 12px; }
+
+  .logo-wrap img {
+    width: 40px; height: 40px;
+    object-fit: contain; border-radius: 50%;
+  }
+
+  .logo-text .main {
+    font-family: 'Barlow', sans-serif; font-weight: 600;
+    font-size: 15px; letter-spacing: 5px; text-transform: uppercase;
+  }
+
+  .logo-text .sub {
+    font-size: 8px; color: var(--texto-suave);
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+
+  .header-right { display: flex; align-items: center; gap: 16px; }
+
+  .badge-admin {
+    font-size: 9px; color: var(--rojo);
+    background: rgba(232,25,44,0.1);
+    border: 1px solid rgba(232,25,44,0.2);
+    padding: 5px 12px; border-radius: 4px;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
+  }
+
+  .btn-logout {
+    background: transparent; border: 1px solid var(--azul-borde);
+    color: var(--texto-suave); border-radius: 6px;
+    padding: 6px 14px; font-size: 11px; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 1px; text-transform: uppercase;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .btn-logout:hover { border-color: var(--rojo); color: var(--rojo); }
+
+  /* TABS */
+  .tabs {
+    display: flex; gap: 0;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--azul-borde);
+    background: rgba(8,16,30,0.7);
+    position: relative; z-index: 1;
+  }
+
+  .tab {
+    padding: 16px 24px; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--texto-suave);
+    cursor: pointer; border-bottom: 2px solid transparent;
+    transition: all 0.2s; font-weight: 500;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .tab:hover { color: var(--blanco); }
+  .tab.active { color: var(--rojo); border-bottom-color: var(--rojo); }
+
+  /* CONTENT */
+  .tab-content { display: none; padding: 32px; max-width: 1200px; margin: 0 auto; }
+  .tab-content.active { display: block; }
+
+  /* FILTROS */
+  .filtros {
+    display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .filtro-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .filtro-group label {
+    font-size: 9px; color: var(--texto-suave);
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  }
+
+  .filtro-group input, .filtro-group select {
+    background: rgba(14,30,53,0.9);
+    border: 1px solid var(--azul-borde);
+    border-radius: 8px; padding: 10px 14px;
+    color: var(--blanco); font-family: 'Barlow', sans-serif;
+    font-size: 13px; outline: none; transition: border-color 0.2s;
+    font-weight: 300; min-width: 160px;
+  }
+
+  .filtro-group select option { background: #0e1e35; }
+  .filtro-group input:focus, .filtro-group select:focus { border-color: var(--rojo); }
+
+  .btn-filtrar {
+    background: var(--rojo); color: white; border: none;
+    border-radius: 8px; padding: 10px 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+    align-self: flex-end;
+  }
+
+  .btn-filtrar:hover { background: var(--rojo-hover); }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin-bottom: 24px;
+  }
+
+  @media (max-width: 700px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+
+  .stat-card {
+    background: rgba(14,30,53,0.85);
+    border: 1px solid var(--azul-borde);
+    border-radius: 12px; padding: 18px 20px;
+    backdrop-filter: blur(8px);
+  }
+
+  .stat-card .stat-label {
+    font-size: 9px; color: var(--texto-suave);
+    letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 500; margin-bottom: 8px;
+  }
+
+  .stat-card .stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px; font-weight: 800; line-height: 1;
+  }
+
+  .stat-card .stat-val.rojo { color: var(--rojo); }
+  .stat-card .stat-val.verde { color: var(--verde); }
+
+  /* TABLA */
+  .tabla-wrap {
+    background: rgba(14,30,53,0.85);
+    border: 1px solid var(--azul-borde);
+    border-radius: 14px; overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead tr {
+    border-bottom: 1px solid var(--azul-borde);
+    background: rgba(10,22,40,0.6);
+  }
+
+  th {
+    padding: 13px 16px; text-align: left;
+    font-size: 9px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--texto-suave);
+    font-weight: 600; font-family: 'Barlow', sans-serif;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(26,48,80,0.5);
+    transition: background 0.15s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(232,25,44,0.04); }
+  tbody tr.cancelada { opacity: 0.4; }
+
+  td {
+    padding: 13px 16px; font-size: 13px;
+    font-weight: 300; color: var(--blanco);
+  }
+
+  td .nombre { font-weight: 500; }
+  td .wsp { color: var(--texto-medio); font-size: 12px; }
+
+  .badge-deporte {
+    display: inline-block; font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase; padding: 2px 8px;
+    border-radius: 3px; font-weight: 600;
+  }
+
+  .badge-futbol { background: rgba(232,25,44,0.1); color: var(--rojo); border: 1px solid rgba(232,25,44,0.2); }
+  .badge-padel { background: rgba(14,100,180,0.12); color: #4da8e8; border: 1px solid rgba(14,100,180,0.22); }
+
+  .badge-estado {
+    display: inline-block; font-size: 9px; letter-spacing: 1px;
+    text-transform: uppercase; padding: 3px 8px;
+    border-radius: 3px; font-weight: 600;
+  }
+
+  .badge-confirmada { background: rgba(34,197,94,0.1); color: var(--verde); border: 1px solid rgba(34,197,94,0.2); }
+  .badge-cancelada { background: rgba(232,25,44,0.08); color: #ff6b6b; border: 1px solid rgba(232,25,44,0.15); }
+
+  .btn-cancelar {
+    background: transparent; border: 1px solid rgba(232,25,44,0.3);
+    color: rgba(232,25,44,0.7); border-radius: 6px;
+    padding: 5px 12px; font-size: 10px; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 1px; text-transform: uppercase;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .btn-cancelar:hover { border-color: var(--rojo); color: var(--rojo); background: rgba(232,25,44,0.06); }
+  .btn-cancelar:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .empty-state {
+    text-align: center; padding: 60px 20px;
+    color: var(--texto-suave); font-size: 13px;
+    font-weight: 300; letter-spacing: 1px;
+  }
+
+  /* RESUMEN TAB */
+  .resumen-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-bottom: 24px;
+  }
+
+  @media (max-width: 700px) { .resumen-grid { grid-template-columns: 1fr; } }
+
+  .resumen-card {
+    background: rgba(14,30,53,0.85);
+    border: 1px solid var(--azul-borde);
+    border-radius: 14px; padding: 24px;
+    backdrop-filter: blur(8px);
+  }
+
+  .resumen-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 4px; color: var(--texto-suave);
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+
+  .resumen-row {
+    display: flex; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid var(--azul-borde);
+    font-size: 13px; font-weight: 300;
+  }
+
+  .resumen-row:last-child { border: none; }
+  .resumen-row .rl { color: var(--texto-suave); }
+  .resumen-row .rv { font-weight: 500; }
+  .resumen-row .rv.rojo { color: var(--rojo); font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; }
+
+  .periodo-select {
+    display: flex; gap: 8px; margin-bottom: 24px;
+  }
+
+  .periodo-btn {
+    background: rgba(14,30,53,0.85);
+    border: 1px solid var(--azul-borde);
+    color: var(--texto-suave); border-radius: 6px;
+    padding: 7px 16px; font-size: 10px; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 2px; text-transform: uppercase;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .periodo-btn.active { border-color: var(--rojo); color: var(--rojo); background: rgba(232,25,44,0.06); }
+  .periodo-btn:hover { border-color: #254a70; color: var(--blanco); }
+
+  .loading { color: var(--texto-suave); font-size: 13px; padding: 40px; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <img src="logo.png" alt="Pico Deportes">
+    <h2>Panel Admin</h2>
+    <p>Pico Deportes · Tandil</p>
+    <div class="login-group">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="admin@picodeportes.com" onkeydown="if(event.key==='Enter') doLogin()">
+    </div>
+    <div class="login-group">
+      <label>Contraseña</label>
+      <input type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter') doLogin()">
+    </div>
+    <div class="login-error" id="loginError">Email o contraseña incorrectos</div>
+    <button class="btn-login" onclick="doLogin()">INGRESAR</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="appScreen">
+  <header>
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Pico Deportes">
+      <div class="logo-text">
+        <div class="main">PICO DEPORTES</div>
+        <div class="sub">Panel Administrativo</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="badge-admin">Admin</div>
+      <button class="btn-logout" onclick="logout()">Salir</button>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('calendario')">Calendario</div>
+    <div class="tab" onclick="switchTab('resumen')">Resumen</div>
+  </div>
+
+  <!-- TAB CALENDARIO -->
+  <div class="tab-content active" id="tab-calendario">
+
+    <div class="filtros">
+      <div class="filtro-group">
+        <label>Fecha</label>
+        <input type="date" id="filtroFecha">
+      </div>
+      <div class="filtro-group">
+        <label>Cancha</label>
+        <select id="filtroCancha">
+          <option value="">Todas las canchas</option>
+          <option>Cancha 1 — F8</option>
+          <option>Cancha 2 — F8</option>
+          <option>Cancha 3 — F8</option>
+          <option>C1 Lado A — F6</option>
+          <option>C1 Lado B — F6</option>
+          <option>C2 Lado A — F6</option>
+          <option>C2 Lado B — F6</option>
+          <option>C3 Lado A — F6</option>
+          <option>C3 Lado B — F6</option>
+          <option>Pádel 1</option>
+          <option>Pádel 2</option>
+          <option>Pádel 3</option>
+        </select>
+      </div>
+      <button class="btn-filtrar" onclick="cargarReservas()">BUSCAR</button>
+    </div>
+
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card">
+        <div class="stat-label">Reservas del día</div>
+        <div class="stat-val" id="statTotal">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Confirmadas</div>
+        <div class="stat-val verde" id="statConfirmadas">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Canceladas</div>
+        <div class="stat-val rojo" id="statCanceladas">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Ingresos del día</div>
+        <div class="stat-val rojo" id="statIngresos">—</div>
+      </div>
+    </div>
+
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Deporte</th>
+            <th>Cancha</th>
+            <th>Horario</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tablaBody">
+          <tr><td colspan="7" class="empty-state">Seleccioná una fecha y hacé click en Buscar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB RESUMEN -->
+  <div class="tab-content" id="tab-resumen">
+    <div class="periodo-select">
+      <button class="periodo-btn active" onclick="setPeriodo('hoy', this)">Hoy</button>
+      <button class="periodo-btn" onclick="setPeriodo('semana', this)">Esta semana</button>
+      <button class="periodo-btn" onclick="setPeriodo('mes', this)">Este mes</button>
+    </div>
+
+    <div class="resumen-grid" id="resumenGrid">
+      <div class="loading">Cargando resumen...</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const API = "https://app-complejo-deportivo-app-reserva-tu-cancha-backend.67iz4w.easypanel.host";
+
+  // Credenciales admin (en producción esto iría en el backend)
+  const ADMIN_EMAIL = "admin@picodeportes.com";
+  const ADMIN_PASS = "PicoAdmin2025";
+
+  let todasReservas = [];
+  let periodoCurrent = 'hoy';
+
+  // LOGIN
+  function doLogin() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const pass = document.getElementById("loginPass").value.trim();
+    const err = document.getElementById("loginError");
+
+    if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("appScreen").style.display = "block";
+      // Set today's date
+      const hoy = new Date();
+      document.getElementById("filtroFecha").value = hoy.toISOString().split("T")[0];
+      cargarReservas();
+      cargarResumen('hoy');
+    } else {
+      err.style.display = "block";
+      setTimeout(() => err.style.display = "none", 3000);
+    }
+  }
+
+  function logout() {
+    document.getElementById("loginScreen").style.display = "flex";
+    document.getElementById("appScreen").style.display = "none";
+    document.getElementById("loginEmail").value = "";
+    document.getElementById("loginPass").value = "";
+  }
+
+  // TABS
+  function switchTab(tab) {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+    event.target.classList.add("active");
+    document.getElementById("tab-" + tab).classList.add("active");
+    if (tab === "resumen") cargarResumen(periodoCurrent);
+  }
+
+  // CARGAR RESERVAS
+  async function cargarReservas() {
+    const fecha = document.getElementById("filtroFecha").value;
+    const cancha = document.getElementById("filtroCancha").value;
+    const body = document.getElementById("tablaBody");
+    body.innerHTML = `<tr><td colspan="7" class="empty-state">Cargando...</td></tr>`;
+
+    try {
+      const res = await fetch(`${API}/reservas`);
+      todasReservas = await res.json();
+
+      let filtradas = todasReservas;
+
+      if (fecha) {
+        // Filtrar por fecha - convertir fecha ISO a formato legible para comparar
+        const d = new Date(fecha + "T00:00:00");
+        const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+        const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+        const fechaStr = `${dias[d.getDay()]} ${d.getDate()} de ${meses[d.getMonth()]}`;
+        filtradas = filtradas.filter(r => r.fecha === fechaStr);
+      }
+
+      if (cancha) {
+        filtradas = filtradas.filter(r => r.cancha === cancha);
+      }
+
+      // Ordenar por horario
+      filtradas.sort((a, b) => a.horario.localeCompare(b.horario));
+
+      // Stats
+      const confirmadas = filtradas.filter(r => r.estado !== "cancelada");
+      const canceladas = filtradas.filter(r => r.estado === "cancelada");
+      const ingresos = confirmadas.reduce((sum, r) => sum + (r.precio || 0), 0);
+
+      document.getElementById("statTotal").textContent = filtradas.length;
+      document.getElementById("statConfirmadas").textContent = confirmadas.length;
+      document.getElementById("statCanceladas").textContent = canceladas.length;
+      document.getElementById("statIngresos").textContent = "$" + ingresos.toLocaleString();
+
+      if (filtradas.length === 0) {
+        body.innerHTML = `<tr><td colspan="7" class="empty-state">No hay reservas para esta búsqueda</td></tr>`;
+        return;
+      }
+
+      body.innerHTML = filtradas.map(r => `
+        <tr class="${r.estado === 'cancelada' ? 'cancelada' : ''}">
+          <td>
+            <div class="nombre">${r.nombre} ${r.apellido}</div>
+            <div class="wsp">${r.whatsapp}</div>
+          </td>
+          <td><span class="badge-deporte ${r.deporte === 'Fútbol' ? 'badge-futbol' : 'badge-padel'}">${r.deporte}</span></td>
+          <td>${r.cancha}</td>
+          <td>${r.horario} hs</td>
+          <td>$${(r.precio || 0).toLocaleString()}</td>
+          <td><span class="badge-estado ${r.estado === 'cancelada' ? 'badge-cancelada' : 'badge-confirmada'}">${r.estado === 'cancelada' ? 'Cancelada' : 'Confirmada'}</span></td>
+          <td>${r.estado !== 'cancelada' ? `<button class="btn-cancelar" onclick="cancelarReserva(${r.id}, this)">Cancelar</button>` : '—'}</td>
+        </tr>
+      `).join('');
+
+    } catch(e) {
+      body.innerHTML = `<tr><td colspan="7" class="empty-state">Error al cargar reservas. Verificá la conexión.</td></tr>`;
+    }
+  }
+
+  // CANCELAR
+  async function cancelarReserva(id, btn) {
+    if (!confirm("¿Cancelar esta reserva?")) return;
+    btn.disabled = true;
+    btn.textContent = "...";
+    try {
+      await fetch(`${API}/cancelar/${id}`, { method: "POST" });
+      cargarReservas();
+    } catch(e) {
+      btn.disabled = false;
+      btn.textContent = "Cancelar";
+      alert("Error al cancelar");
+    }
+  }
+
+  // RESUMEN
+  function setPeriodo(periodo, el) {
+    document.querySelectorAll(".periodo-btn").forEach(b => b.classList.remove("active"));
+    el.classList.add("active");
+    periodoCurrent = periodo;
+    cargarResumen(periodo);
+  }
+
+  async function cargarResumen(periodo) {
+    const grid = document.getElementById("resumenGrid");
+    grid.innerHTML = `<div class="loading">Cargando resumen...</div>`;
+
+    try {
+      const res = await fetch(`${API}/reservas`);
+      const todas = await res.json();
+
+      const hoy = new Date();
+      let filtradas = todas.filter(r => r.estado !== "cancelada");
+
+      if (periodo === "hoy") {
+        const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+        const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+        const fechaHoy = `${dias[hoy.getDay()]} ${hoy.getDate()} de ${meses[hoy.getMonth()]}`;
+        filtradas = filtradas.filter(r => r.fecha === fechaHoy);
+      } else if (periodo === "semana") {
+        const hace7 = new Date(hoy); hace7.setDate(hoy.getDate() - 7);
+        filtradas = filtradas.filter(r => new Date(r.fecha_creacion) >= hace7);
+      } else if (periodo === "mes") {
+        const hace30 = new Date(hoy); hace30.setDate(hoy.getDate() - 30);
+        filtradas = filtradas.filter(r => new Date(r.fecha_creacion) >= hace30);
+      }
+
+      const ingresos = filtradas.reduce((s, r) => s + (r.precio || 0), 0);
+      const futbol = filtradas.filter(r => r.deporte === "Fútbol").length;
+      const padel = filtradas.filter(r => r.deporte === "Pádel").length;
+
+      // Cancha más reservada
+      const porCancha = {};
+      filtradas.forEach(r => { porCancha[r.cancha] = (porCancha[r.cancha] || 0) + 1; });
+      const topCancha = Object.entries(porCancha).sort((a,b) => b[1]-a[1])[0];
+
+      const labels = { hoy: "hoy", semana: "esta semana", mes: "este mes" };
+
+      grid.innerHTML = `
+        <div class="resumen-card">
+          <h3>Reservas ${labels[periodo]}</h3>
+          <div class="resumen-row"><span class="rl">Total reservas</span><span class="rv">${filtradas.length}</span></div>
+          <div class="resumen-row"><span class="rl">Fútbol</span><span class="rv">${futbol}</span></div>
+          <div class="resumen-row"><span class="rl">Pádel</span><span class="rv">${padel}</span></div>
+          <div class="resumen-row"><span class="rl">Cancha más reservada</span><span class="rv">${topCancha ? topCancha[0] : '—'}</span></div>
+        </div>
+        <div class="resumen-card">
+          <h3>Ingresos ${labels[periodo]}</h3>
+          <div class="resumen-row"><span class="rl">Total ingresos</span><span class="rv rojo">$${ingresos.toLocaleString()}</span></div>
+          <div class="resumen-row"><span class="rl">Promedio por reserva</span><span class="rv">$${filtradas.length ? Math.round(ingresos/filtradas.length).toLocaleString() : 0}</span></div>
+          <div class="resumen-row"><span class="rl">Ingreso fútbol</span><span class="rv">$${filtradas.filter(r=>r.deporte==="Fútbol").reduce((s,r)=>s+(r.precio||0),0).toLocaleString()}</span></div>
+          <div class="resumen-row"><span class="rl">Ingreso pádel</span><span class="rv">$${filtradas.filter(r=>r.deporte==="Pádel").reduce((s,r)=>s+(r.precio||0),0).toLocaleString()}</span></div>
+        </div>
+      `;
+    } catch(e) {
+      grid.innerHTML = `<div class="loading">Error al cargar resumen</div>`;
+    }
+  }
+</script>
+</body>
+</html>
