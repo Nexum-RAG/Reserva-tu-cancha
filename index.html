@@ -43,7 +43,6 @@
     position: relative; z-index: 1;
   }
 
-  /* HEADER */
   header {
     padding: 14px 32px;
     display: flex;
@@ -57,200 +56,65 @@
   }
 
   .logo-wrap { display: flex; align-items: center; gap: 12px; }
-
-  .logo-img {
-    width: 44px; height: 44px;
-    object-fit: contain;
-    border-radius: 50%;
-  }
-
+  .logo-img { width: 44px; height: 44px; object-fit: contain; border-radius: 50%; }
   .logo-text { display: flex; flex-direction: column; line-height: 1; gap: 3px; }
+  .logo-text .main { font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: 5px; text-transform: uppercase; color: var(--blanco); }
+  .logo-text .sub { font-size: 9px; color: var(--texto-suave); letter-spacing: 3px; text-transform: uppercase; }
 
-  .logo-text .main {
-    font-family: 'Barlow', sans-serif;
-    font-weight: 600;
-    font-size: 17px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--blanco);
-  }
-
-  .logo-text .sub {
-    font-size: 9px; color: var(--texto-suave);
-    letter-spacing: 3px; text-transform: uppercase;
-  }
-
-  .badge-online {
-    display: flex; align-items: center; gap: 7px;
-    font-size: 10px; color: var(--texto-suave);
-    background: rgba(10,22,40,0.8);
-    border: 1px solid var(--azul-borde);
-    padding: 6px 12px; border-radius: 20px; letter-spacing: 1px;
-  }
-
-  .dot {
-    width: 6px; height: 6px; background: #22c55e;
-    border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite;
-  }
+  .badge-online { display: flex; align-items: center; gap: 7px; font-size: 10px; color: var(--texto-suave); background: rgba(10,22,40,0.8); border: 1px solid var(--azul-borde); padding: 6px 12px; border-radius: 20px; letter-spacing: 1px; }
+  .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite; }
 
   @keyframes pulse {
     0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
     50% { box-shadow: 0 0 0 4px rgba(34,197,94,0); }
   }
 
-  /* HERO */
   .hero { padding: 60px 32px 44px; max-width: 980px; margin: 0 auto; }
-
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(232,25,44,0.1); border: 1px solid rgba(232,25,44,0.2);
-    color: var(--rojo); font-size: 10px; letter-spacing: 4px;
-    text-transform: uppercase; padding: 6px 14px; border-radius: 4px;
-    margin-bottom: 22px; font-weight: 500;
-  }
-
-  .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-    font-size: clamp(58px, 10vw, 108px); line-height: 0.87;
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px;
-  }
-
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,25,44,0.1); border: 1px solid rgba(232,25,44,0.2); color: var(--rojo); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; padding: 6px 14px; border-radius: 4px; margin-bottom: 22px; font-weight: 500; }
+  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(58px, 10vw, 108px); line-height: 0.87; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px; }
   .hero h1 .rojo { color: var(--rojo); }
+  .hero p { color: var(--texto-medio); font-size: 14px; max-width: 380px; line-height: 1.8; font-weight: 300; }
 
-  .hero p {
-    color: var(--texto-medio); font-size: 14px;
-    max-width: 380px; line-height: 1.8; font-weight: 300;
-  }
+  .divider { height: 1px; background: linear-gradient(90deg, var(--rojo) 0%, var(--azul-borde) 50%, transparent 100%); max-width: 980px; margin: 0 auto 36px; position: relative; z-index: 1; }
 
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, var(--rojo) 0%, var(--azul-borde) 50%, transparent 100%);
-    max-width: 980px; margin: 0 auto 36px; position: relative; z-index: 1;
-  }
-
-  /* STEPS */
-  .steps {
-    display: flex; gap: 4px; padding: 0 32px;
-    max-width: 980px; margin: 0 auto 40px;
-  }
-
-  .step {
-    flex: 1; padding: 5px 4px; border-radius: 5px;
-    border: 1px solid var(--azul-borde); font-size: 8px;
-    color: var(--texto-suave); text-align: center; transition: all 0.3s;
-    background: rgba(10,22,40,0.6); letter-spacing: 1px; text-transform: uppercase;
-  }
-
+  .steps { display: flex; gap: 4px; padding: 0 32px; max-width: 980px; margin: 0 auto 40px; }
+  .step { flex: 1; padding: 5px 4px; border-radius: 5px; border: 1px solid var(--azul-borde); font-size: 8px; color: var(--texto-suave); text-align: center; transition: all 0.3s; background: rgba(10,22,40,0.6); letter-spacing: 1px; text-transform: uppercase; }
   .step.active { border-color: var(--rojo); color: var(--rojo); background: rgba(232,25,44,0.06); }
   .step.done { border-color: #152840; color: #254060; background: transparent; }
+  .step-num { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.2; }
 
-  .step-num {
-    display: block; font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px; font-weight: 700; line-height: 1.2;
-  }
-
-  /* CONTAINER */
   .container { max-width: 980px; margin: 0 auto; padding: 0 32px 80px; }
+  .section-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 14px; font-weight: 500; }
 
-  .section-label {
-    font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-    color: var(--texto-suave); margin-bottom: 14px; font-weight: 500;
-  }
-
-  /* DEPORTE */
-  .deporte-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 12px; margin-bottom: 48px; max-width: 480px;
-  }
-
-  .deporte-card {
-    background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde);
-    border-radius: 14px; padding: 32px 20px 26px; text-align: center;
-    cursor: pointer; transition: all 0.25s; user-select: none;
-    position: relative; overflow: hidden; backdrop-filter: blur(8px);
-  }
-
-  .deporte-card::before {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px; background: var(--rojo);
-    transform: scaleX(0); transition: transform 0.25s;
-  }
-
+  .deporte-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 48px; max-width: 480px; }
+  .deporte-card { background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); border-radius: 14px; padding: 32px 20px 26px; text-align: center; cursor: pointer; transition: all 0.25s; user-select: none; position: relative; overflow: hidden; backdrop-filter: blur(8px); }
+  .deporte-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--rojo); transform: scaleX(0); transition: transform 0.25s; }
   .deporte-card:hover { border-color: #254a70; transform: translateY(-3px); }
   .deporte-card:hover::before { transform: scaleX(0.4); }
   .deporte-card.selected { border-color: var(--rojo); background: rgba(232,25,44,0.07); }
   .deporte-card.selected::before { transform: scaleX(1); }
-
   .deporte-icon { width: 60px; height: 60px; margin: 0 auto 14px; }
   .deporte-icon svg { width: 100%; height: 100%; }
+  .deporte-card .nombre { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; }
 
-  .deporte-card .nombre {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
-    font-size: 20px; letter-spacing: 2px; text-transform: uppercase;
-  }
-
-  .deporte-icon { width: 60px; height: 60px; margin: 0 auto 14px; }
-  .deporte-icon svg { width: 100%; height: 100%; }
-
-  /* CANCHA */
   .cancha-section { margin-bottom: 48px; display: none; }
-
-  .nota-division {
-    background: rgba(232,25,44,0.05); border: 1px solid rgba(232,25,44,0.12);
-    border-radius: 8px; padding: 10px 14px; font-size: 11px;
-    color: rgba(232,25,44,0.65); margin-bottom: 14px; display: none;
-  }
-
+  .nota-division { background: rgba(232,25,44,0.05); border: 1px solid rgba(232,25,44,0.12); border-radius: 8px; padding: 10px 14px; font-size: 11px; color: rgba(232,25,44,0.65); margin-bottom: 14px; display: none; }
   .cancha-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 10px; }
-
-  .cancha-card {
-    background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde);
-    border-radius: 12px; padding: 18px; cursor: pointer;
-    transition: all 0.2s; backdrop-filter: blur(8px);
-  }
-
+  .cancha-card { background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); border-radius: 12px; padding: 18px; cursor: pointer; transition: all 0.2s; backdrop-filter: blur(8px); }
   .cancha-card:hover { border-color: #254a70; transform: translateY(-2px); }
   .cancha-card.selected { border-color: var(--rojo); background: rgba(232,25,44,0.06); }
-
-  .tag-cancha {
-    display: inline-block; font-size: 9px; letter-spacing: 2px;
-    text-transform: uppercase; padding: 2px 8px; border-radius: 3px;
-    margin-bottom: 9px; font-weight: 600;
-  }
-
+  .tag-cancha { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-bottom: 9px; font-weight: 600; }
   .tag-futbol { background: rgba(232,25,44,0.1); color: var(--rojo); border: 1px solid rgba(232,25,44,0.2); }
   .tag-padel { background: rgba(14,100,180,0.12); color: #4da8e8; border: 1px solid rgba(14,100,180,0.22); }
-
-  .cancha-card .cancha-nombre {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
-    font-size: 16px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;
-  }
-
+  .cancha-card .cancha-nombre { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
   .cancha-card .cancha-tipo { font-size: 11px; color: var(--texto-suave); line-height: 1.6; font-weight: 300; }
+  .cancha-card .cancha-precio { margin-top: 12px; font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: var(--rojo); }
+  .cancha-card .cancha-precio span { font-family: 'Barlow', sans-serif; font-size: 10px; color: var(--texto-suave); font-weight: 300; }
 
-  .cancha-card .cancha-precio {
-    margin-top: 12px; font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px; font-weight: 700; color: var(--rojo);
-  }
-
-  .cancha-card .cancha-precio span {
-    font-family: 'Barlow', sans-serif; font-size: 10px;
-    color: var(--texto-suave); font-weight: 300;
-  }
-
-  /* FECHA */
   .fecha-section { margin-bottom: 48px; display: none; }
-
   .fecha-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
   .fecha-scroll::-webkit-scrollbar { display: none; }
-
-  .fecha-chip {
-    flex-shrink: 0; background: rgba(14,30,53,0.85);
-    border: 1px solid var(--azul-borde); border-radius: 10px;
-    padding: 11px 12px; text-align: center; cursor: pointer;
-    transition: all 0.2s; min-width: 62px; backdrop-filter: blur(8px);
-  }
-
+  .fecha-chip { flex-shrink: 0; background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); border-radius: 10px; padding: 11px 12px; text-align: center; cursor: pointer; transition: all 0.2s; min-width: 62px; backdrop-filter: blur(8px); }
   .fecha-chip:hover { border-color: #254a70; }
   .fecha-chip.selected { border-color: var(--rojo); background: rgba(232,25,44,0.07); }
   .fecha-chip .dia-nombre { font-size: 8px; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
@@ -258,181 +122,80 @@
   .fecha-chip .mes { font-size: 8px; color: var(--texto-suave); letter-spacing: 1px; text-transform: uppercase; }
   .fecha-chip.selected .dia-num { color: var(--rojo); }
 
-  /* HORARIO */
   .horario-section { margin-bottom: 48px; display: none; }
-
-  .leyenda {
-    display: flex; gap: 18px; margin-bottom: 12px; font-size: 9px;
-    color: var(--texto-suave); align-items: center; letter-spacing: 1px; text-transform: uppercase;
-  }
-
+  .leyenda { display: flex; gap: 18px; margin-bottom: 12px; font-size: 9px; color: var(--texto-suave); align-items: center; letter-spacing: 1px; text-transform: uppercase; }
   .leyenda-item { display: flex; align-items: center; gap: 6px; }
   .leyenda-dot { width: 9px; height: 9px; border-radius: 2px; }
   .leyenda-dot.libre { background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); }
   .leyenda-dot.ocupado { background: transparent; border: 1px dashed #1a3050; }
   .leyenda-dot.sel { background: rgba(232,25,44,0.25); border: 1px solid var(--rojo); }
-
   .horario-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: 8px; }
-
-  .horario-chip {
-    background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde);
-    border-radius: 8px; padding: 10px 8px; text-align: center; cursor: pointer;
-    transition: all 0.2s; font-size: 14px; font-weight: 500; backdrop-filter: blur(8px);
-  }
-
+  .horario-chip { background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); border-radius: 8px; padding: 10px 8px; text-align: center; cursor: pointer; transition: all 0.2s; font-size: 14px; font-weight: 500; backdrop-filter: blur(8px); }
   .horario-chip:hover { border-color: #254a70; transform: translateY(-1px); }
   .horario-chip.selected { border-color: var(--rojo); background: rgba(232,25,44,0.07); color: var(--rojo); }
   .horario-chip.ocupado { opacity: 0.2; cursor: not-allowed; text-decoration: line-through; font-size: 12px; transform: none !important; }
   .horario-chip .duracion { font-size: 9px; color: var(--texto-suave); margin-top: 2px; font-weight: 300; }
 
-  /* FORM */
   .form-section { margin-bottom: 48px; display: none; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
   .form-group { display: flex; flex-direction: column; gap: 7px; }
   .form-group.full { grid-column: 1 / -1; }
   label { font-size: 9px; color: var(--texto-suave); letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
-
-  input {
-    background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde);
-    border-radius: 8px; padding: 13px 16px; color: var(--blanco);
-    font-family: 'Barlow', sans-serif; font-size: 14px; outline: none;
-    transition: border-color 0.2s; font-weight: 300; backdrop-filter: blur(8px);
-  }
-
+  input { background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); border-radius: 8px; padding: 13px 16px; color: var(--blanco); font-family: 'Barlow', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; font-weight: 300; backdrop-filter: blur(8px); }
   input:focus { border-color: var(--rojo); }
   input::placeholder { color: #254060; }
 
-  /* RESUMEN */
-  .resumen-card {
-    background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde);
-    border-radius: 14px; padding: 24px; margin-bottom: 16px; display: none; backdrop-filter: blur(8px);
-  }
-
-  .resumen-card h3 {
-    font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700;
-    letter-spacing: 5px; color: var(--texto-suave); margin-bottom: 16px; text-transform: uppercase;
-  }
-
-  .resumen-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 0; border-bottom: 1px solid var(--azul-borde); font-size: 13px;
-  }
-
+  .resumen-card { background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); border-radius: 14px; padding: 24px; margin-bottom: 16px; display: none; backdrop-filter: blur(8px); }
+  .resumen-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 5px; color: var(--texto-suave); margin-bottom: 16px; text-transform: uppercase; }
+  .resumen-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--azul-borde); font-size: 13px; }
   .resumen-row:last-child { border-bottom: none; }
   .resumen-row .label { color: var(--texto-suave); font-weight: 300; }
   .resumen-row .value { font-weight: 500; }
   .resumen-row.total .value { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--rojo); }
 
-  .btn-reservar {
-    width: 100%; background: var(--rojo); color: white; border: none;
-    border-radius: 10px; padding: 16px;
-    font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800;
-    letter-spacing: 5px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; display: none;
-  }
-
+  .btn-reservar { width: 100%; background: var(--rojo); color: white; border: none; border-radius: 10px; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; display: none; }
   .btn-reservar:hover { background: var(--rojo-hover); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,25,44,0.28); }
+  .btn-reservar:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-  /* INFO */
-  .info-section {
-    max-width: 980px; margin: 0 auto; padding: 0 32px 80px;
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
-    position: relative; z-index: 1;
-  }
-
+  .info-section { max-width: 980px; margin: 0 auto; padding: 0 32px 80px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; position: relative; z-index: 1; }
   @media (max-width: 700px) { .info-section { grid-template-columns: 1fr; } }
-
-  .info-card {
-    background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde);
-    border-radius: 14px; padding: 22px; backdrop-filter: blur(8px);
-  }
-
-  .info-card h4 {
-    font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
-    letter-spacing: 4px; text-transform: uppercase; color: var(--texto-suave);
-    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
-  }
-
-  .horario-row {
-    display: flex; justify-content: space-between; font-size: 12px;
-    padding: 8px 0; border-bottom: 1px solid var(--azul-borde); font-weight: 300;
-  }
-
+  .info-card { background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); border-radius: 14px; padding: 22px; backdrop-filter: blur(8px); }
+  .info-card h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .horario-row { display: flex; justify-content: space-between; font-size: 12px; padding: 8px 0; border-bottom: 1px solid var(--azul-borde); font-weight: 300; }
   .horario-row:last-child { border: none; }
   .horario-row .dia { color: var(--texto-suave); }
   .horario-row .hora { font-weight: 500; }
-
-  .mapa-embed {
-    width: 100%; height: 155px; border-radius: 8px; border: none;
-    filter: grayscale(40%) contrast(1.1) brightness(0.85); margin-top: 4px;
-  }
-
+  .mapa-embed { width: 100%; height: 155px; border-radius: 8px; border: none; filter: grayscale(40%) contrast(1.1) brightness(0.85); margin-top: 4px; }
   .ubicacion-texto { font-size: 11px; color: var(--texto-suave); line-height: 1.7; font-weight: 300; margin-bottom: 10px; }
-
   .servicios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .servicio-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--texto-medio); font-weight: 300; padding: 5px 0; filter: grayscale(1); }
 
-  .servicio-item {
-    display: flex; align-items: center; gap: 7px; font-size: 11px;
-    color: var(--texto-medio); font-weight: 300; padding: 5px 0; filter: grayscale(1);
-  }
+  footer { border-top: 1px solid var(--azul-borde); padding: 22px 32px; text-align: center; font-size: 10px; color: var(--texto-suave); letter-spacing: 2px; font-weight: 300; text-transform: uppercase; position: relative; z-index: 1; }
 
-  footer {
-    border-top: 1px solid var(--azul-borde); padding: 22px 32px; text-align: center;
-    font-size: 10px; color: var(--texto-suave); letter-spacing: 2px;
-    font-weight: 300; text-transform: uppercase; position: relative; z-index: 1;
-  }
-
-  /* SUCCESS */
   .success-screen { display: none; text-align: center; padding: 80px 32px; max-width: 500px; margin: 0 auto; }
-
-  .success-icon {
-    width: 68px; height: 68px; background: rgba(232,25,44,0.08);
-    border: 1px solid var(--rojo); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; margin: 0 auto 26px;
-    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  @keyframes popIn {
-    from { transform: scale(0); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-
-  .success-screen h2 {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-    font-size: 48px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; line-height: 1;
-  }
-
+  .success-icon { width: 68px; height: 68px; background: rgba(232,25,44,0.08); border: 1px solid var(--rojo); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 26px; animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .success-screen h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 48px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; line-height: 1; }
   .success-screen p { color: var(--texto-medio); line-height: 1.8; margin-bottom: 8px; font-size: 14px; font-weight: 300; }
-
-  .success-detail {
-    background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde);
-    border-radius: 12px; padding: 20px; margin: 24px 0; text-align: left; backdrop-filter: blur(8px);
-  }
-
-  .success-detail .row {
-    display: flex; justify-content: space-between; font-size: 13px;
-    padding: 8px 0; border-bottom: 1px solid var(--azul-borde); font-weight: 300;
-  }
-
+  .success-detail { background: rgba(14,30,53,0.85); border: 1px solid var(--azul-borde); border-radius: 12px; padding: 20px; margin: 24px 0; text-align: left; backdrop-filter: blur(8px); }
+  .success-detail .row { display: flex; justify-content: space-between; font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--azul-borde); font-weight: 300; }
   .success-detail .row:last-child { border: none; }
   .success-detail .row span:first-child { color: var(--texto-suave); }
   .success-detail .row span:last-child { font-weight: 500; }
-
-  .whatsapp-note {
-    background: rgba(37,211,102,0.06); border: 1px solid rgba(37,211,102,0.15);
-    border-radius: 8px; padding: 12px 16px; font-size: 12px;
-    color: #25d366; margin-bottom: 20px; font-weight: 300;
-  }
-
-  .btn-nueva {
-    background: transparent; border: 1px solid var(--azul-borde); color: var(--texto-medio);
-    border-radius: 8px; padding: 12px 28px; font-family: 'Barlow', sans-serif;
-    font-size: 12px; cursor: pointer; transition: all 0.2s; font-weight: 300;
-    letter-spacing: 2px; text-transform: uppercase;
-  }
-
+  .whatsapp-note { background: rgba(37,211,102,0.06); border: 1px solid rgba(37,211,102,0.15); border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #25d366; margin-bottom: 20px; font-weight: 300; }
+  .btn-nueva { background: transparent; border: 1px solid var(--azul-borde); color: var(--texto-medio); border-radius: 8px; padding: 12px 28px; font-family: 'Barlow', sans-serif; font-size: 12px; cursor: pointer; transition: all 0.2s; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
   .btn-nueva:hover { border-color: #254a70; color: var(--blanco); }
+
+  /* Loading spinner */
+  .loading { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.8s ease-in-out infinite; margin-right: 8px; vertical-align: middle; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Toast notification */
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(14,30,53,0.97); border: 1px solid var(--azul-borde); border-radius: 10px; padding: 14px 22px; font-size: 13px; color: var(--blanco); z-index: 9999; transition: transform 0.3s; backdrop-filter: blur(20px); }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error { border-color: var(--rojo); color: var(--rojo); }
+  .toast.success { border-color: #22c55e; color: #22c55e; }
 
   @media (max-width: 600px) {
     header { padding: 14px 18px; }
@@ -445,6 +208,9 @@
 </style>
 </head>
 <body>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
 
 <header>
   <div class="logo-wrap">
@@ -476,9 +242,9 @@
 
   <div class="container">
 
+    <!-- PASO 1: DEPORTE -->
     <div class="section-label">¿Qué querés jugar?</div>
     <div class="deporte-grid">
-
       <div class="deporte-card" onclick="selDeporte(this, 'Fútbol')">
         <div class="deporte-icon">
           <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -508,56 +274,37 @@
       <div class="deporte-card" onclick="selDeporte(this, 'Pádel')">
         <div class="deporte-icon">
           <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Pelota -->
             <circle cx="46" cy="11" r="5.5" fill="white"/>
-            <!-- Paleta de fondo (outline, rotada izquierda) -->
             <g transform="rotate(25 30 30)">
-              <rect x="19" y="7" width="17" height="23" rx="8.5" fill="none" stroke="white" stroke-width="1.8"/>
-              <rect x="25.5" y="29" width="4" height="13" rx="2" fill="none" stroke="white" stroke-width="1.8"/>
-            </g>
-            <!-- Paleta principal (rellena, rotada derecha) -->
-            <g transform="rotate(-18 30 30)">
-              <rect x="21" y="7" width="17" height="23" rx="8.5" fill="white"/>
-              <circle cx="26" cy="13" r="1.4" fill="#0a1628"/>
-              <circle cx="30" cy="13" r="1.4" fill="#0a1628"/>
-              <circle cx="34" cy="13" r="1.4" fill="#0a1628"/>
-              <circle cx="26" cy="18" r="1.4" fill="#0a1628"/>
-              <circle cx="30" cy="18" r="1.4" fill="#0a1628"/>
-              <circle cx="34" cy="18" r="1.4" fill="#0a1628"/>
-              <circle cx="26" cy="23" r="1.4" fill="#0a1628"/>
-              <circle cx="30" cy="23" r="1.4" fill="#0a1628"/>
-              <circle cx="34" cy="23" r="1.4" fill="#0a1628"/>
-              <rect x="27.5" y="29" width="4" height="13" rx="2" fill="white"/>
-              <line x1="27.5" y1="33" x2="31.5" y2="33" stroke="#0a1628" stroke-width="1"/>
-              <line x1="27.5" y1="36.5" x2="31.5" y2="36.5" stroke="#0a1628" stroke-width="1"/>
-              <line x1="27.5" y1="40" x2="31.5" y2="40" stroke="#0a1628" stroke-width="1"/>
+              <rect x="19" y="7" width="22" height="28" rx="11" fill="none" stroke="white" stroke-width="1.8"/>
+              <line x1="30" y1="19" x2="30" y2="35" stroke="white" stroke-width="1.4"/>
+              <line x1="23" y1="22" x2="37" y2="22" stroke="white" stroke-width="1.4"/>
+              <line x1="23" y1="28" x2="37" y2="28" stroke="white" stroke-width="1.4"/>
+              <rect x="27" y="35" width="6" height="18" rx="3" fill="none" stroke="white" stroke-width="1.8"/>
             </g>
           </svg>
         </div>
         <div class="nombre">Pádel</div>
-        <div class="canchas">3 canchas dobles · Interior</div>
+        <div class="canchas">2 canchas · P1 y P2</div>
       </div>
-
     </div>
 
-    <!-- CANCHA -->
+    <!-- PASO 2: CANCHA -->
     <div class="cancha-section" id="canchaSection">
-      <div class="section-label">Elegí la cancha</div>
-      <div class="nota-division" id="notaDivision">
-        ℹ️ Las canchas de Fútbol 8 pueden dividirse en dos canchas de Fútbol 6 simultáneas.
-      </div>
+      <div class="section-label">Elegí tu cancha</div>
+      <div class="nota-division" id="notaDivision">Las canchas de fútbol 8 tienen arco y medidas reglamentarias</div>
       <div class="cancha-grid" id="canchaGrid"></div>
     </div>
 
-    <!-- FECHA -->
+    <!-- PASO 3: FECHA -->
     <div class="fecha-section" id="fechaSection">
-      <div class="section-label">¿Cuándo querés jugar?</div>
+      <div class="section-label">¿Qué día?</div>
       <div class="fecha-scroll" id="fechaScroll"></div>
     </div>
 
-    <!-- HORARIO -->
+    <!-- PASO 4: HORARIO -->
     <div class="horario-section" id="horarioSection">
-      <div class="section-label">Seleccioná el horario</div>
+      <div class="section-label">Elegí el horario</div>
       <div class="leyenda">
         <div class="leyenda-item"><div class="leyenda-dot libre"></div>Disponible</div>
         <div class="leyenda-item"><div class="leyenda-dot ocupado"></div>Ocupado</div>
@@ -566,260 +313,403 @@
       <div class="horario-grid" id="horarioGrid"></div>
     </div>
 
-    <!-- DATOS -->
+    <!-- PASO 5: DATOS -->
     <div class="form-section" id="formSection">
       <div class="section-label">Tus datos</div>
       <div class="form-grid">
         <div class="form-group">
           <label>Nombre</label>
-          <input type="text" id="inputNombre" placeholder="Tu nombre">
+          <input type="text" id="inputNombre" placeholder="Tu nombre" />
         </div>
         <div class="form-group">
           <label>Apellido</label>
-          <input type="text" id="inputApellido" placeholder="Tu apellido">
+          <input type="text" id="inputApellido" placeholder="Tu apellido" />
         </div>
         <div class="form-group full">
           <label>WhatsApp</label>
-          <input type="tel" id="inputWsp" placeholder="+54 9 249 000 0000">
+          <input type="tel" id="inputTelefono" placeholder="Ej: 2494123456" />
         </div>
       </div>
     </div>
 
+    <!-- RESUMEN -->
     <div class="resumen-card" id="resumenCard">
       <h3>Resumen de reserva</h3>
-      <div class="resumen-row"><span class="label">Deporte</span><span class="value" id="r-deporte">-</span></div>
-      <div class="resumen-row"><span class="label">Cancha</span><span class="value" id="r-cancha">-</span></div>
-      <div class="resumen-row"><span class="label">Fecha</span><span class="value" id="r-fecha">-</span></div>
-      <div class="resumen-row"><span class="label">Horario</span><span class="value" id="r-horario">-</span></div>
-      <div class="resumen-row"><span class="label">Duración</span><span class="value">60 min</span></div>
-      <div class="resumen-row total"><span class="label">Total</span><span class="value" id="r-total">-</span></div>
+      <div class="resumen-row"><span class="label">Deporte</span><span class="value" id="resDeporte">—</span></div>
+      <div class="resumen-row"><span class="label">Cancha</span><span class="value" id="resCancha">—</span></div>
+      <div class="resumen-row"><span class="label">Fecha</span><span class="value" id="resFecha">—</span></div>
+      <div class="resumen-row"><span class="label">Horario</span><span class="value" id="resHorario">—</span></div>
+      <div class="resumen-row total"><span class="label">Total</span><span class="value" id="resTotal">—</span></div>
     </div>
 
-    <button class="btn-reservar" id="btnReservar" onclick="confirmarReserva()">CONFIRMAR RESERVA</button>
+    <button class="btn-reservar" id="btnReservar" onclick="confirmarReserva()">Confirmar reserva</button>
 
   </div>
+</div>
 
-  <div class="divider" style="margin-bottom: 36px;"></div>
+<!-- PANTALLA DE ÉXITO -->
+<div id="successScreen" style="display:none;">
+  <div class="success-screen">
+    <div class="success-icon">✓</div>
+    <h2>¡Reserva<br>confirmada!</h2>
+    <p>Tu turno quedó registrado.</p>
+    <div class="success-detail" id="successDetail"></div>
+    <div class="whatsapp-note">📱 Te vamos a contactar por WhatsApp para confirmar el pago.</div>
+    <button class="btn-nueva" onclick="nuevaReserva()">Hacer otra reserva</button>
+  </div>
+</div>
 
-  <div class="info-section">
-    <div class="info-card">
-      <h4>📍 Ubicación</h4>
-      <p class="ubicacion-texto">Colectora Sur J.C. Pugliese 2256<br>B7000 Tandil, Buenos Aires</p>
-      <iframe class="mapa-embed"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.082036866792!2d-59.11162642357178!3d-37.30860699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95911c7e2f5e8b8b%3A0x8e9f2a3b4c5d6e7f!2sColectora+Pugliese+2256%2C+Tandil%2C+Buenos+Aires!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-    <div class="info-card">
-      <h4>🕐 Horarios</h4>
-      <div class="horario-row"><span class="dia">Lunes a Domingo</span><span class="hora">08:00 – 00:00</span></div>
-      <div class="horario-row"><span class="dia">Feriados</span><span class="hora">08:00 – 02:00</span></div>
-    </div>
-    <div class="info-card">
-      <h4>⭐ Servicios</h4>
-      <div class="servicios-grid">
-        <div class="servicio-item">📶 WiFi</div>
-        <div class="servicio-item">💪 Gimnasio</div>
-        <div class="servicio-item">🍺 Bar</div>
-        <div class="servicio-item">🚿 Vestuarios</div>
-        <div class="servicio-item">🅿️ Parking</div>
-        <div class="servicio-item">🏥 Médico</div>
-        <div class="servicio-item">🎂 Cumpleaños</div>
-        <div class="servicio-item">🔥 Parrilla</div>
-        <div class="servicio-item">🏫 Escuelita</div>
-        <div class="servicio-item">🏠 Quincho</div>
-        <div class="servicio-item">🏓 Paletas</div>
-        <div class="servicio-item">🏢 Colegios</div>
-      </div>
+<!-- INFO -->
+<div class="info-section">
+  <div class="info-card">
+    <h4>🕐 Horarios</h4>
+    <div class="horario-row"><span class="dia">Lun – Vie</span><span class="hora">8:00 – 23:00</span></div>
+    <div class="horario-row"><span class="dia">Sábados</span><span class="hora">8:00 – 23:00</span></div>
+    <div class="horario-row"><span class="dia">Domingos</span><span class="hora">9:00 – 22:00</span></div>
+  </div>
+  <div class="info-card">
+    <h4>📍 Ubicación</h4>
+    <p class="ubicacion-texto">Av. del Valle 1234, Tandil, Buenos Aires</p>
+    <iframe class="mapa-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d-59.13316!3d-37.32167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDE5JzE4LjAiUyA1OcKwMDcnNTkuNCJX!5e0!3m2!1ses!2sar!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+  <div class="info-card">
+    <h4>✨ Servicios</h4>
+    <div class="servicios-grid">
+      <div class="servicio-item">🅿️ Estacionamiento</div>
+      <div class="servicio-item">🚿 Vestuarios</div>
+      <div class="servicio-item">💡 Iluminación</div>
+      <div class="servicio-item">🥤 Buffet</div>
+      <div class="servicio-item">⚽ Alquiler pelotas</div>
+      <div class="servicio-item">🏆 Torneos</div>
     </div>
   </div>
 </div>
 
-<div class="success-screen" id="successScreen">
-  <div class="success-icon">✓</div>
-  <h2>¡RESERVA<br>CONFIRMADA!</h2>
-  <p>Tu turno está reservado en <strong>Pico Deportes</strong>.<br>En instantes recibís la confirmación por WhatsApp.</p>
-  <div class="success-detail" id="successDetail"></div>
-  <div class="whatsapp-note">📱 Confirmación enviada a tu WhatsApp</div>
-  <button class="btn-nueva" onclick="nuevaReserva()">Hacer otra reserva</button>
-</div>
-
-<footer>© 2025 Pico Deportes · Tandil, Buenos Aires · Reservas 24/7</footer>
+<footer>© 2025 Pico Deportes · Tandil · Todos los derechos reservados</footer>
 
 <script>
-  const canchasPorDeporte = {
-    "Fútbol": [
-      { nombre: "Cancha 1 — F8", tipo: "Fútbol 8 · Césped sintético · Aire libre\nDivisible en 2 canchas de F6", precio: 14000, tag: "futbol", esF8: true },
-      { nombre: "Cancha 2 — F8", tipo: "Fútbol 8 · Césped sintético · Aire libre\nDivisible en 2 canchas de F6", precio: 14000, tag: "futbol", esF8: true },
-      { nombre: "Cancha 3 — F8", tipo: "Fútbol 8 · Césped sintético · Aire libre\nDivisible en 2 canchas de F6", precio: 14000, tag: "futbol", esF8: true },
-      { nombre: "C1 Lado A — F6", tipo: "Fútbol 6 · Mitad de Cancha 1", precio: 8000, tag: "futbol", esF8: false },
-      { nombre: "C1 Lado B — F6", tipo: "Fútbol 6 · Mitad de Cancha 1", precio: 8000, tag: "futbol", esF8: false },
-      { nombre: "C2 Lado A — F6", tipo: "Fútbol 6 · Mitad de Cancha 2", precio: 8000, tag: "futbol", esF8: false },
-      { nombre: "C2 Lado B — F6", tipo: "Fútbol 6 · Mitad de Cancha 2", precio: 8000, tag: "futbol", esF8: false },
-      { nombre: "C3 Lado A — F6", tipo: "Fútbol 6 · Mitad de Cancha 3", precio: 8000, tag: "futbol", esF8: false },
-      { nombre: "C3 Lado B — F6", tipo: "Fútbol 6 · Mitad de Cancha 3", precio: 8000, tag: "futbol", esF8: false },
+  // ============================================================
+  // CONFIGURACIÓN
+  // ============================================================
+  const BACKEND_URL = 'https://app-complejo-deportivo-app-reserva-tu-cancha-backend.67iz4w.easypanel.host';
+
+  // ============================================================
+  // DATOS DE CANCHAS
+  // ============================================================
+  const CANCHAS = {
+    'Fútbol': [
+      { id: 'F1', nombre: 'Cancha 1', tipo: 'Fútbol 8 · Césped sintético', precio: 12000, tag: 'futbol' },
+      { id: 'F2', nombre: 'Cancha 2', tipo: 'Fútbol 8 · Césped sintético', precio: 12000, tag: 'futbol' },
+      { id: 'F3', nombre: 'Cancha 3', tipo: 'Fútbol 6 · Césped sintético', precio: 9000, tag: 'futbol' },
     ],
-    "Pádel": [
-      { nombre: "Pádel 1", tipo: "Cancha doble · Cristal · Interior", precio: 7000, tag: "padel" },
-      { nombre: "Pádel 2", tipo: "Cancha doble · Cristal · Interior", precio: 7000, tag: "padel" },
-      { nombre: "Pádel 3", tipo: "Cancha doble · Cristal · Interior", precio: 7000, tag: "padel" },
+    'Pádel': [
+      { id: 'P1', nombre: 'Pádel 1', tipo: 'Cancha techada · Cristal', precio: 7000, tag: 'padel' },
+      { id: 'P2', nombre: 'Pádel 2', tipo: 'Cancha techada · Cristal', precio: 7000, tag: 'padel' },
     ]
   };
 
-  const API_URL = "https://app-complejo-deportivo-app-reserva-tu-cancha-backend.67iz4w.easypanel.host";
+  const HORARIOS = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'];
 
-  const horariosTodos = ["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
-  let sel = { deporte: null, cancha: null, canchaData: null, fecha: null, horario: null };
+  // ============================================================
+  // ESTADO
+  // ============================================================
+  let estado = {
+    deporte: null,
+    cancha: null,
+    fecha: null,
+    horario: null,
+    horariosOcupados: []
+  };
 
-  function selDeporte(el, deporte) {
-    document.querySelectorAll(".deporte-card").forEach(c => c.classList.remove("selected"));
-    el.classList.add("selected");
-    sel = { deporte, cancha: null, canchaData: null, fecha: null, horario: null };
-    const grid = document.getElementById("canchaGrid");
-    grid.innerHTML = "";
-    document.getElementById("notaDivision").style.display = deporte === "Fútbol" ? "block" : "none";
-    canchasPorDeporte[deporte].forEach(c => {
-      const div = document.createElement("div");
-      div.className = "cancha-card";
-      div.innerHTML = `<div class="tag-cancha tag-${c.tag}">${c.tag === "futbol" ? (c.esF8 ? "FÚTBOL 8" : "FÚTBOL 6") : "PÁDEL"}</div><div class="cancha-nombre">${c.nombre}</div><div class="cancha-tipo">${c.tipo.replace("\n","<br>")}</div><div class="cancha-precio">$${c.precio.toLocaleString()} <span>/ hora</span></div>`;
-      div.onclick = () => selCancha(div, c);
-      grid.appendChild(div);
-    });
-    show("canchaSection"); hide("fechaSection"); hide("horarioSection"); hide("formSection"); hide("resumenCard");
-    document.getElementById("btnReservar").style.display = "none";
-    updateSteps(2);
-    setTimeout(() => document.getElementById("canchaSection").scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+  // ============================================================
+  // TOAST
+  // ============================================================
+  function showToast(msg, tipo = '') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast ' + tipo;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
   }
 
-  function selCancha(el, canchaData) {
-    document.querySelectorAll(".cancha-card").forEach(c => c.classList.remove("selected"));
-    el.classList.add("selected");
-    sel.cancha = canchaData.nombre; sel.canchaData = canchaData; sel.fecha = null; sel.horario = null;
-    const scroll = document.getElementById("fechaScroll");
-    scroll.innerHTML = "";
-    const dias = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
-    const meses = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
-    const hoy = new Date();
-    for (let i = 0; i < 14; i++) {
-      const d = new Date(hoy); d.setDate(hoy.getDate() + i);
-      const chip = document.createElement("div");
-      chip.className = "fecha-chip";
-      if (i === 0) chip.innerHTML = `<div class="dia-nombre">Hoy</div><div class="dia-num">${d.getDate()}</div><div class="mes">${meses[d.getMonth()]}</div>`;
-      else if (i === 1) chip.innerHTML = `<div class="dia-nombre">Mañana</div><div class="dia-num">${d.getDate()}</div><div class="mes">${meses[d.getMonth()]}</div>`;
-      else chip.innerHTML = `<div class="dia-nombre">${dias[d.getDay()]}</div><div class="dia-num">${d.getDate()}</div><div class="mes">${meses[d.getMonth()]}</div>`;
-      chip.onclick = () => selFecha(chip, d);
-      scroll.appendChild(chip);
+  // ============================================================
+  // STEPS
+  // ============================================================
+  function updateSteps(activo) {
+    for (let i = 1; i <= 5; i++) {
+      const s = document.getElementById('step' + i);
+      s.className = 'step';
+      if (i < activo) s.classList.add('done');
+      else if (i === activo) s.classList.add('active');
     }
-    show("fechaSection"); hide("horarioSection"); hide("formSection"); hide("resumenCard");
-    document.getElementById("btnReservar").style.display = "none";
-    updateSteps(3);
-    setTimeout(() => document.getElementById("fechaSection").scrollIntoView({ behavior: "smooth", block: "start" }), 100);
   }
 
-  async function selFecha(el, fecha) {
-    document.querySelectorAll(".fecha-chip").forEach(c => c.classList.remove("selected"));
-    el.classList.add("selected");
-    const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-    const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-    sel.fecha = `${dias[fecha.getDay()]} ${fecha.getDate()} de ${meses[fecha.getMonth()]}`;
-    sel.horario = null;
-    const grid = document.getElementById("horarioGrid");
-    grid.innerHTML = `<div style="color:#5a7a9a;font-size:13px;grid-column:1/-1;padding:16px 0;">Cargando horarios...</div>`;
-    show("horarioSection"); hide("formSection"); hide("resumenCard");
-    document.getElementById("btnReservar").style.display = "none";
-    updateSteps(4);
-    let ocupados = [];
-    try {
-      const res = await fetch(`${API_URL}/disponibilidad?cancha=${encodeURIComponent(sel.cancha)}&fecha=${encodeURIComponent(sel.fecha)}`);
-      const data = await res.json();
-      ocupados = data.ocupados || [];
-    } catch(e) { console.error("Error consultando disponibilidad:", e); }
-    grid.innerHTML = "";
-    horariosTodos.forEach(h => {
-      const estaOcupado = ocupados.includes(h);
-      const chip = document.createElement("div");
-      chip.className = "horario-chip" + (estaOcupado ? " ocupado" : "");
-      chip.innerHTML = `${h}<div class="duracion">60 min</div>`;
-      if (!estaOcupado) chip.onclick = () => selHorario(chip, h);
-      grid.appendChild(chip);
+  // ============================================================
+  // PASO 1: DEPORTE
+  // ============================================================
+  function selDeporte(el, deporte) {
+    document.querySelectorAll('.deporte-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    estado.deporte = deporte;
+    estado.cancha = null;
+    estado.fecha = null;
+    estado.horario = null;
+
+    renderCanchas(deporte);
+    document.getElementById('canchaSection').style.display = 'block';
+    document.getElementById('fechaSection').style.display = 'none';
+    document.getElementById('horarioSection').style.display = 'none';
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('resumenCard').style.display = 'none';
+    document.getElementById('btnReservar').style.display = 'none';
+    updateSteps(2);
+
+    setTimeout(() => document.getElementById('canchaSection').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+
+  // ============================================================
+  // PASO 2: CANCHA
+  // ============================================================
+  function renderCanchas(deporte) {
+    const grid = document.getElementById('canchaGrid');
+    grid.innerHTML = '';
+    CANCHAS[deporte].forEach(c => {
+      const precio = c.precio.toLocaleString('es-AR');
+      grid.innerHTML += `
+        <div class="cancha-card" onclick="selCancha(this, '${c.id}', '${c.nombre}', ${c.precio})">
+          <span class="tag-cancha tag-${c.tag}">${deporte}</span>
+          <div class="cancha-nombre">${c.nombre}</div>
+          <div class="cancha-tipo">${c.tipo}</div>
+          <div class="cancha-precio">$${precio}<span> / hora</span></div>
+        </div>`;
     });
-    setTimeout(() => document.getElementById("horarioSection").scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+  }
+
+  function selCancha(el, id, nombre, precio) {
+    document.querySelectorAll('.cancha-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    estado.cancha = { id, nombre, precio };
+    estado.fecha = null;
+    estado.horario = null;
+
+    renderFechas();
+    document.getElementById('fechaSection').style.display = 'block';
+    document.getElementById('horarioSection').style.display = 'none';
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('resumenCard').style.display = 'none';
+    document.getElementById('btnReservar').style.display = 'none';
+    updateSteps(3);
+
+    setTimeout(() => document.getElementById('fechaSection').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+
+  // ============================================================
+  // PASO 3: FECHA
+  // ============================================================
+  function renderFechas() {
+    const scroll = document.getElementById('fechaScroll');
+    scroll.innerHTML = '';
+    const dias = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const hoy = new Date();
+
+    for (let i = 0; i < 14; i++) {
+      const d = new Date(hoy);
+      d.setDate(hoy.getDate() + i);
+      const fechaStr = d.toISOString().split('T')[0];
+      scroll.innerHTML += `
+        <div class="fecha-chip" onclick="selFecha(this, '${fechaStr}', '${dias[d.getDay()]} ${d.getDate()} ${meses[d.getMonth()]}')">
+          <div class="dia-nombre">${dias[d.getDay()]}</div>
+          <div class="dia-num">${d.getDate()}</div>
+          <div class="mes">${meses[d.getMonth()]}</div>
+        </div>`;
+    }
+  }
+
+  async function selFecha(el, fecha, fechaTexto) {
+    document.querySelectorAll('.fecha-chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    estado.fecha = { valor: fecha, texto: fechaTexto };
+    estado.horario = null;
+
+    updateSteps(4);
+    document.getElementById('horarioSection').style.display = 'block';
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('resumenCard').style.display = 'none';
+    document.getElementById('btnReservar').style.display = 'none';
+
+    // Cargar horarios ocupados desde el backend
+    await cargarHorariosOcupados(fecha, estado.cancha.id);
+
+    setTimeout(() => document.getElementById('horarioSection').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+
+  // ============================================================
+  // CARGAR HORARIOS OCUPADOS DESDE BACKEND
+  // ============================================================
+  async function cargarHorariosOcupados(fecha, canchaId) {
+    const grid = document.getElementById('horarioGrid');
+    grid.innerHTML = '<div style="color:var(--texto-suave);font-size:12px;padding:10px 0;"><span class="loading"></span>Cargando disponibilidad...</div>';
+
+    try {
+      const res = await fetch(`${BACKEND_URL}/disponibilidad?cancha=${canchaId}&fecha=${fecha}`);
+      const data = await res.json();
+      estado.horariosOcupados = data.ocupados || [];
+    } catch (e) {
+      console.error('Error cargando disponibilidad:', e);
+      estado.horariosOcupados = [];
+    }
+
+    renderHorarios();
+  }
+
+  // ============================================================
+  // PASO 4: HORARIO
+  // ============================================================
+  function renderHorarios() {
+    const grid = document.getElementById('horarioGrid');
+    grid.innerHTML = '';
+    HORARIOS.forEach(h => {
+      const ocupado = estado.horariosOcupados.includes(h);
+      grid.innerHTML += `
+        <div class="horario-chip ${ocupado ? 'ocupado' : ''}" onclick="${ocupado ? '' : `selHorario(this, '${h}')`}">
+          ${h}
+          <div class="duracion">1 hora</div>
+        </div>`;
+    });
   }
 
   function selHorario(el, horario) {
-    document.querySelectorAll(".horario-chip:not(.ocupado)").forEach(c => c.classList.remove("selected"));
-    el.classList.add("selected");
-    sel.horario = horario;
-    show("formSection"); show("resumenCard");
-    document.getElementById("r-deporte").textContent = sel.deporte;
-    document.getElementById("r-cancha").textContent = sel.cancha;
-    document.getElementById("r-fecha").textContent = sel.fecha;
-    document.getElementById("r-horario").textContent = sel.horario + " hs";
-    document.getElementById("r-total").textContent = "$" + sel.canchaData.precio.toLocaleString();
-    document.getElementById("btnReservar").style.display = "block";
+    document.querySelectorAll('.horario-chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    estado.horario = horario;
+
+    document.getElementById('formSection').style.display = 'block';
     updateSteps(5);
-    setTimeout(() => document.getElementById("formSection").scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+    actualizarResumen();
+
+    setTimeout(() => document.getElementById('formSection').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+
+    // Mostrar resumen y botón cuando se completen los datos
+    document.querySelectorAll('#inputNombre, #inputApellido, #inputTelefono').forEach(inp => {
+      inp.addEventListener('input', checkFormulario);
+    });
+    checkFormulario();
   }
 
+  // ============================================================
+  // RESUMEN
+  // ============================================================
+  function actualizarResumen() {
+    if (!estado.cancha) return;
+    document.getElementById('resDeporte').textContent = estado.deporte || '—';
+    document.getElementById('resCancha').textContent = estado.cancha?.nombre || '—';
+    document.getElementById('resFecha').textContent = estado.fecha?.texto || '—';
+    document.getElementById('resHorario').textContent = estado.horario ? `${estado.horario} hs` : '—';
+    document.getElementById('resTotal').textContent = estado.cancha ? `$${estado.cancha.precio.toLocaleString('es-AR')}` : '—';
+  }
+
+  function checkFormulario() {
+    const nombre = document.getElementById('inputNombre').value.trim();
+    const apellido = document.getElementById('inputApellido').value.trim();
+    const telefono = document.getElementById('inputTelefono').value.trim();
+
+    if (nombre && apellido && telefono && estado.horario) {
+      document.getElementById('resumenCard').style.display = 'block';
+      document.getElementById('btnReservar').style.display = 'block';
+      actualizarResumen();
+    } else {
+      document.getElementById('resumenCard').style.display = 'none';
+      document.getElementById('btnReservar').style.display = 'none';
+    }
+  }
+
+  // ============================================================
+  // CONFIRMAR RESERVA
+  // ============================================================
   async function confirmarReserva() {
-    const nombre = document.getElementById("inputNombre").value.trim();
-    const apellido = document.getElementById("inputApellido").value.trim();
-    const wsp = document.getElementById("inputWsp").value.trim();
-    if (!nombre || !apellido || !wsp) { alert("Por favor completá todos tus datos."); return; }
-    const btn = document.getElementById("btnReservar");
-    btn.textContent = "ENVIANDO...";
+    const nombre = document.getElementById('inputNombre').value.trim();
+    const apellido = document.getElementById('inputApellido').value.trim();
+    const telefono = document.getElementById('inputTelefono').value.trim();
+
+    if (!nombre || !apellido || !telefono) {
+      showToast('Completá todos tus datos', 'error');
+      return;
+    }
+
+    if (!estado.deporte || !estado.cancha || !estado.fecha || !estado.horario) {
+      showToast('Faltan datos de la reserva', 'error');
+      return;
+    }
+
+    const btn = document.getElementById('btnReservar');
     btn.disabled = true;
+    btn.innerHTML = '<span class="loading"></span>Confirmando...';
+
+    const reserva = {
+      nombre,
+      apellido,
+      whatsapp: telefono,
+      deporte: estado.deporte,
+      cancha: estado.cancha.id,
+      fecha: estado.fecha.valor,
+      horario: estado.horario,
+      precio: estado.cancha.precio
+    };
+
     try {
-      const res = await fetch(`${API_URL}/reservar`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, apellido, whatsapp: wsp, deporte: sel.deporte, cancha: sel.cancha, fecha: sel.fecha, horario: sel.horario, precio: sel.canchaData.precio })
+      const res = await fetch(`${BACKEND_URL}/reservar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reserva)
       });
-      const data = await res.json();
+
       if (!res.ok) {
-        alert(data.error || "Hubo un error. Intentá de nuevo.");
-        btn.textContent = "CONFIRMAR RESERVA";
-        btn.disabled = false;
-        return;
+        const err = await res.json();
+        throw new Error(err.error || 'Error al confirmar');
       }
-      document.getElementById("mainContent").style.display = "none";
-      document.getElementById("successScreen").style.display = "block";
-      document.getElementById("successDetail").innerHTML = `
-        <div class="row"><span>Nombre</span><span>${nombre} ${apellido}</span></div>
-        <div class="row"><span>Deporte</span><span>${sel.deporte}</span></div>
-        <div class="row"><span>Cancha</span><span>${sel.cancha}</span></div>
-        <div class="row"><span>Fecha</span><span>${sel.fecha}</span></div>
-        <div class="row"><span>Horario</span><span>${sel.horario} hs (60 min)</span></div>
-        <div class="row"><span>Total</span><span>$${sel.canchaData.precio.toLocaleString()}</span></div>
+
+      // Éxito
+      document.getElementById('mainContent').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+
+      document.getElementById('successDetail').innerHTML = `
+        <div class="row"><span>Deporte</span><span>${estado.deporte}</span></div>
+        <div class="row"><span>Cancha</span><span>${estado.cancha.nombre}</span></div>
+        <div class="row"><span>Fecha</span><span>${estado.fecha.texto}</span></div>
+        <div class="row"><span>Horario</span><span>${estado.horario} hs</span></div>
+        <div class="row"><span>Total</span><span>$${estado.cancha.precio.toLocaleString('es-AR')}</span></div>
+        <div class="row"><span>WhatsApp</span><span>${telefono}</span></div>
       `;
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch(e) {
-      alert("Error de conexión. Intentá de nuevo.");
-      btn.textContent = "CONFIRMAR RESERVA";
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (e) {
+      showToast(e.message || 'Error al confirmar la reserva', 'error');
       btn.disabled = false;
+      btn.innerHTML = 'Confirmar reserva';
     }
   }
 
+  // ============================================================
+  // NUEVA RESERVA
+  // ============================================================
   function nuevaReserva() {
-    document.getElementById("successScreen").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
-    document.querySelectorAll(".deporte-card, .cancha-card, .fecha-chip, .horario-chip").forEach(c => c.classList.remove("selected"));
-    ["inputNombre","inputApellido","inputWsp"].forEach(id => document.getElementById(id).value = "");
-    hide("canchaSection"); hide("fechaSection"); hide("horarioSection"); hide("formSection"); hide("resumenCard");
-    document.getElementById("btnReservar").style.display = "none";
-    sel = { deporte: null, cancha: null, canchaData: null, fecha: null, horario: null };
+    estado = { deporte: null, cancha: null, fecha: null, horario: null, horariosOcupados: [] };
+    document.getElementById('mainContent').style.display = 'block';
+    document.getElementById('successScreen').style.display = 'none';
+    document.querySelectorAll('.deporte-card, .cancha-card, .fecha-chip, .horario-chip').forEach(el => el.classList.remove('selected'));
+    document.getElementById('canchaSection').style.display = 'none';
+    document.getElementById('fechaSection').style.display = 'none';
+    document.getElementById('horarioSection').style.display = 'none';
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('resumenCard').style.display = 'none';
+    document.getElementById('btnReservar').style.display = 'none';
+    document.getElementById('inputNombre').value = '';
+    document.getElementById('inputApellido').value = '';
+    document.getElementById('inputTelefono').value = '';
     updateSteps(1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  function show(id) { document.getElementById(id).style.display = "block"; }
-  function hide(id) { document.getElementById(id).style.display = "none"; }
-
-  function updateSteps(active) {
-    for (let i = 1; i <= 5; i++) {
-      const s = document.getElementById("step" + i);
-      s.className = "step" + (i === active ? " active" : i < active ? " done" : "");
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
 </body>
