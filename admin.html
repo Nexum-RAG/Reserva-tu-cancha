@@ -844,8 +844,8 @@
 
       let filtradas = todas;
       if (fecha) {
-        const fechaTexto = fechaISO_a_texto(fecha);
-        filtradas = filtradas.filter(r => r.fecha === fechaTexto);
+        const fechaTextoViejo = fechaISO_a_texto(fecha);
+        filtradas = filtradas.filter(r => r.fecha === fecha || r.fecha === fechaTextoViejo);
       }
 
       // Stats
@@ -1024,8 +1024,9 @@
       let filtradas = todas.filter(r => r.estado !== 'cancelada');
 
       if (periodo === 'hoy') {
-        const fechaHoy = fechaISO_a_texto(hoy.toISOString().split('T')[0]);
-        filtradas = filtradas.filter(r => r.fecha === fechaHoy);
+        const hoyISO = hoy.toISOString().split('T')[0];
+        const fechaHoyTexto = fechaISO_a_texto(hoyISO);
+        filtradas = filtradas.filter(r => r.fecha === hoyISO || r.fecha === fechaHoyTexto);
       } else if (periodo === 'semana') {
         const hace7 = new Date(hoy); hace7.setDate(hoy.getDate() - 7);
         filtradas = filtradas.filter(r => new Date(r.fecha_creacion) >= hace7);
