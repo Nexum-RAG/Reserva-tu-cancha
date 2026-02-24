@@ -38,7 +38,7 @@
     z-index: 0; pointer-events: none;
   }
 
-  /* LOGIN */
+  /* ── LOGIN ─────────────────────────────────────────────── */
   #loginScreen {
     position: fixed; inset: 0; z-index: 200;
     display: flex; align-items: center; justify-content: center;
@@ -120,12 +120,12 @@
 
   .btn-login:hover { background: var(--rojo-hover); transform: translateY(-1px); }
 
-  /* MAIN APP */
+  /* ── MAIN APP ───────────────────────────────────────────── */
   #appScreen { display: none; position: relative; z-index: 1; }
 
-  /* HEADER */
+  /* ── HEADER ─────────────────────────────────────────────── */
   header {
-    padding: 14px 32px;
+    padding: 12px 28px;
     display: flex; align-items: center; justify-content: space-between;
     border-bottom: 1px solid var(--azul-borde);
     position: sticky; top: 0;
@@ -136,13 +136,13 @@
   .logo-wrap { display: flex; align-items: center; gap: 12px; }
 
   .logo-wrap img {
-    width: 40px; height: 40px;
+    width: 36px; height: 36px;
     object-fit: contain; border-radius: 50%;
   }
 
   .logo-text .main {
     font-family: 'Barlow', sans-serif; font-weight: 600;
-    font-size: 15px; letter-spacing: 5px; text-transform: uppercase;
+    font-size: 14px; letter-spacing: 5px; text-transform: uppercase;
   }
 
   .logo-text .sub {
@@ -150,37 +150,37 @@
     letter-spacing: 3px; text-transform: uppercase;
   }
 
-  .header-right { display: flex; align-items: center; gap: 16px; }
+  .header-right { display: flex; align-items: center; gap: 14px; }
 
   .badge-admin {
     font-size: 9px; color: var(--rojo);
     background: rgba(232,25,44,0.1);
     border: 1px solid rgba(232,25,44,0.2);
-    padding: 5px 12px; border-radius: 4px;
+    padding: 4px 10px; border-radius: 4px;
     letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
   }
 
   .btn-logout {
     background: transparent; border: 1px solid var(--azul-borde);
     color: var(--texto-suave); border-radius: 6px;
-    padding: 6px 14px; font-size: 11px; cursor: pointer;
+    padding: 5px 12px; font-size: 11px; cursor: pointer;
     transition: all 0.2s; letter-spacing: 1px; text-transform: uppercase;
     font-family: 'Barlow', sans-serif;
   }
 
   .btn-logout:hover { border-color: var(--rojo); color: var(--rojo); }
 
-  /* TABS */
+  /* ── TABS ───────────────────────────────────────────────── */
   .tabs {
-    display: flex; gap: 0;
-    padding: 0 32px;
+    display: flex;
+    padding: 0 28px;
     border-bottom: 1px solid var(--azul-borde);
     background: rgba(8,16,30,0.7);
     position: relative; z-index: 1;
   }
 
   .tab {
-    padding: 16px 24px; font-size: 11px; letter-spacing: 3px;
+    padding: 14px 22px; font-size: 10px; letter-spacing: 3px;
     text-transform: uppercase; color: var(--texto-suave);
     cursor: pointer; border-bottom: 2px solid transparent;
     transition: all 0.2s; font-weight: 500;
@@ -190,17 +190,17 @@
   .tab:hover { color: var(--blanco); }
   .tab.active { color: var(--rojo); border-bottom-color: var(--rojo); }
 
-  /* CONTENT */
-  .tab-content { display: none; padding: 32px; max-width: 1200px; margin: 0 auto; }
+  /* ── CONTENT ─────────────────────────────────────────────── */
+  .tab-content { display: none; padding: 24px 28px; max-width: 1280px; margin: 0 auto; }
   .tab-content.active { display: block; }
 
-  /* FILTROS */
+  /* ── FILTROS ─────────────────────────────────────────────── */
   .filtros {
-    display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;
+    display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;
     align-items: flex-end;
   }
 
-  .filtro-group { display: flex; flex-direction: column; gap: 6px; }
+  .filtro-group { display: flex; flex-direction: column; gap: 5px; }
 
   .filtro-group label {
     font-size: 9px; color: var(--texto-suave);
@@ -210,10 +210,10 @@
   .filtro-group input, .filtro-group select {
     background: rgba(14,30,53,0.9);
     border: 1px solid var(--azul-borde);
-    border-radius: 8px; padding: 10px 14px;
+    border-radius: 7px; padding: 9px 12px;
     color: var(--blanco); font-family: 'Barlow', sans-serif;
     font-size: 13px; outline: none; transition: border-color 0.2s;
-    font-weight: 300; min-width: 160px;
+    font-weight: 300; min-width: 150px;
   }
 
   .filtro-group select option { background: #0e1e35; }
@@ -221,91 +221,200 @@
 
   .btn-filtrar {
     background: var(--rojo); color: white; border: none;
-    border-radius: 8px; padding: 10px 20px;
+    border-radius: 7px; padding: 9px 18px;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px; font-weight: 700; letter-spacing: 3px;
+    font-size: 15px; font-weight: 700; letter-spacing: 3px;
     text-transform: uppercase; cursor: pointer; transition: all 0.2s;
     align-self: flex-end;
   }
 
   .btn-filtrar:hover { background: var(--rojo-hover); }
 
-  /* STATS ROW */
-  .stats-row {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 12px; margin-bottom: 24px;
+  /* ── STATS MINI ──────────────────────────────────────────── */
+  .stats-mini {
+    display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap;
   }
 
-  @media (max-width: 700px) { .stats-row { grid-template-columns: 1fr 1fr; } }
-
-  .stat-card {
+  .stat-mini {
     background: rgba(14,30,53,0.85);
     border: 1px solid var(--azul-borde);
-    border-radius: 12px; padding: 18px 20px;
+    border-radius: 10px; padding: 10px 16px;
     backdrop-filter: blur(8px);
+    display: flex; align-items: center; gap: 10px;
   }
 
-  .stat-card .stat-label {
+  .stat-mini .sm-label {
     font-size: 9px; color: var(--texto-suave);
-    letter-spacing: 3px; text-transform: uppercase;
-    font-weight: 500; margin-bottom: 8px;
+    letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
   }
 
-  .stat-card .stat-val {
+  .stat-mini .sm-val {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px; font-weight: 800; line-height: 1;
+    font-size: 22px; font-weight: 800; line-height: 1;
   }
 
-  .stat-card .stat-val.rojo { color: var(--rojo); }
-  .stat-card .stat-val.verde { color: var(--verde); }
+  .sm-val.verde { color: var(--verde); }
+  .sm-val.rojo { color: var(--rojo); }
+  .sm-val.blanco { color: var(--blanco); }
 
-  /* TABLA */
-  .tabla-wrap {
+  /* ── GRILLA CALENDARIO ───────────────────────────────────── */
+  .grilla-wrap {
     background: rgba(14,30,53,0.85);
     border: 1px solid var(--azul-borde);
-    border-radius: 14px; overflow: hidden;
+    border-radius: 14px; overflow: auto;
     backdrop-filter: blur(8px);
+    margin-bottom: 18px;
   }
 
-  table { width: 100%; border-collapse: collapse; }
+  .grilla-table {
+    width: 100%; border-collapse: collapse;
+    min-width: 700px;
+  }
 
-  thead tr {
+  .grilla-table thead tr {
     border-bottom: 1px solid var(--azul-borde);
-    background: rgba(10,22,40,0.6);
+    background: rgba(10,22,40,0.7);
   }
 
-  th {
-    padding: 13px 16px; text-align: left;
-    font-size: 9px; letter-spacing: 3px;
+  .grilla-table th {
+    padding: 10px 12px; text-align: center;
+    font-size: 9px; letter-spacing: 2px;
     text-transform: uppercase; color: var(--texto-suave);
     font-weight: 600; font-family: 'Barlow', sans-serif;
+    white-space: nowrap;
   }
 
-  tbody tr {
-    border-bottom: 1px solid rgba(26,48,80,0.5);
-    transition: background 0.15s;
+  .grilla-table th:first-child {
+    text-align: left; min-width: 80px;
   }
 
-  tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: rgba(232,25,44,0.04); }
-  tbody tr.cancelada { opacity: 0.4; }
-
-  td {
-    padding: 13px 16px; font-size: 13px;
-    font-weight: 300; color: var(--blanco);
+  .grilla-table tbody tr {
+    border-bottom: 1px solid rgba(26,48,80,0.4);
   }
 
-  td .nombre { font-weight: 500; }
-  td .wsp { color: var(--texto-medio); font-size: 12px; }
+  .grilla-table tbody tr:last-child { border-bottom: none; }
 
-  .badge-deporte {
-    display: inline-block; font-size: 9px; letter-spacing: 2px;
-    text-transform: uppercase; padding: 2px 8px;
-    border-radius: 3px; font-weight: 600;
+  .grilla-table td {
+    padding: 0; text-align: center;
+    font-size: 12px; font-weight: 300;
   }
 
-  .badge-futbol { background: rgba(232,25,44,0.1); color: var(--rojo); border: 1px solid rgba(232,25,44,0.2); }
-  .badge-padel { background: rgba(14,100,180,0.12); color: #4da8e8; border: 1px solid rgba(14,100,180,0.22); }
+  .grilla-table td:first-child {
+    padding: 10px 14px; text-align: left;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--texto-medio); letter-spacing: 1px;
+    background: rgba(10,22,40,0.4);
+    border-right: 1px solid var(--azul-borde);
+    white-space: nowrap;
+  }
+
+  .celda {
+    width: 100%; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: default; transition: all 0.15s;
+    font-size: 11px; font-weight: 500;
+    position: relative;
+  }
+
+  .celda.libre {
+    color: rgba(34,197,94,0.3);
+    font-size: 16px;
+  }
+
+  .celda.ocupada {
+    background: rgba(232,25,44,0.12);
+    color: var(--blanco);
+    cursor: pointer;
+    flex-direction: column; gap: 2px;
+    border: 1px solid rgba(232,25,44,0.15);
+  }
+
+  .celda.ocupada:hover {
+    background: rgba(232,25,44,0.22);
+    border-color: rgba(232,25,44,0.35);
+  }
+
+  .celda.ocupada.seleccionada {
+    background: rgba(232,25,44,0.28);
+    border-color: var(--rojo);
+    box-shadow: inset 0 0 0 1px var(--rojo);
+  }
+
+  .celda.cancelada-cell {
+    background: rgba(26,48,80,0.2);
+    color: var(--texto-suave);
+    opacity: 0.5;
+    font-size: 16px;
+    cursor: default;
+  }
+
+  .celda-nombre {
+    font-size: 10px; font-weight: 600;
+    color: var(--blanco); letter-spacing: 0.5px;
+    max-width: 90px; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  .celda-deporte {
+    font-size: 8px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--texto-medio);
+  }
+
+  /* ── DETALLE RESERVA ─────────────────────────────────────── */
+  #detallePanel {
+    background: rgba(14,30,53,0.9);
+    border: 1px solid var(--azul-borde);
+    border-radius: 14px; padding: 20px 24px;
+    backdrop-filter: blur(8px);
+    display: none; margin-bottom: 18px;
+    animation: fadeIn 0.2s ease;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+  #detallePanel .detalle-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  #detallePanel .detalle-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 4px; color: var(--rojo);
+    text-transform: uppercase;
+  }
+
+  .detalle-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+  }
+
+  .detalle-item { display: flex; flex-direction: column; gap: 4px; }
+
+  .detalle-item .di-label {
+    font-size: 8px; color: var(--texto-suave);
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  }
+
+  .detalle-item .di-val {
+    font-size: 14px; font-weight: 500; color: var(--blanco);
+  }
+
+  .detalle-item .di-val.di-wsp {
+    color: var(--texto-medio); font-size: 13px; font-weight: 300;
+  }
+
+  .btn-cancelar {
+    background: transparent; border: 1px solid rgba(232,25,44,0.3);
+    color: rgba(232,25,44,0.7); border-radius: 6px;
+    padding: 6px 14px; font-size: 10px; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 1px; text-transform: uppercase;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .btn-cancelar:hover { border-color: var(--rojo); color: var(--rojo); background: rgba(232,25,44,0.06); }
+  .btn-cancelar:disabled { opacity: 0.3; cursor: not-allowed; }
 
   .badge-estado {
     display: inline-block; font-size: 9px; letter-spacing: 1px;
@@ -316,24 +425,25 @@
   .badge-confirmada { background: rgba(34,197,94,0.1); color: var(--verde); border: 1px solid rgba(34,197,94,0.2); }
   .badge-cancelada { background: rgba(232,25,44,0.08); color: #ff6b6b; border: 1px solid rgba(232,25,44,0.15); }
 
-  .btn-cancelar {
-    background: transparent; border: 1px solid rgba(232,25,44,0.3);
-    color: rgba(232,25,44,0.7); border-radius: 6px;
-    padding: 5px 12px; font-size: 10px; cursor: pointer;
-    transition: all 0.2s; letter-spacing: 1px; text-transform: uppercase;
-    font-family: 'Barlow', sans-serif;
+  /* ── LEYENDA ─────────────────────────────────────────────── */
+  .leyenda {
+    display: flex; gap: 16px; margin-bottom: 14px; flex-wrap: wrap;
   }
 
-  .btn-cancelar:hover { border-color: var(--rojo); color: var(--rojo); background: rgba(232,25,44,0.06); }
-  .btn-cancelar:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  .empty-state {
-    text-align: center; padding: 60px 20px;
-    color: var(--texto-suave); font-size: 13px;
-    font-weight: 300; letter-spacing: 1px;
+  .leyenda-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 10px; color: var(--texto-suave); letter-spacing: 1px;
   }
 
-  /* RESUMEN TAB */
+  .leyenda-dot {
+    width: 10px; height: 10px; border-radius: 2px;
+  }
+
+  .leyenda-dot.ocupado { background: rgba(232,25,44,0.5); border: 1px solid rgba(232,25,44,0.4); }
+  .leyenda-dot.libre { background: transparent; border: 1px solid rgba(34,197,94,0.3); }
+  .leyenda-dot.cancel { background: rgba(26,48,80,0.4); border: 1px solid var(--azul-borde); }
+
+  /* ── RESUMEN TAB ─────────────────────────────────────────── */
   .resumen-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 16px; margin-bottom: 24px;
@@ -344,45 +454,142 @@
   .resumen-card {
     background: rgba(14,30,53,0.85);
     border: 1px solid var(--azul-borde);
-    border-radius: 14px; padding: 24px;
+    border-radius: 14px; padding: 22px;
     backdrop-filter: blur(8px);
   }
 
   .resumen-card h3 {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px; font-weight: 700;
+    font-size: 12px; font-weight: 700;
     letter-spacing: 4px; color: var(--texto-suave);
-    text-transform: uppercase; margin-bottom: 20px;
+    text-transform: uppercase; margin-bottom: 18px;
   }
 
   .resumen-row {
     display: flex; justify-content: space-between;
-    padding: 10px 0; border-bottom: 1px solid var(--azul-borde);
+    padding: 9px 0; border-bottom: 1px solid var(--azul-borde);
     font-size: 13px; font-weight: 300;
   }
 
   .resumen-row:last-child { border: none; }
   .resumen-row .rl { color: var(--texto-suave); }
   .resumen-row .rv { font-weight: 500; }
-  .resumen-row .rv.rojo { color: var(--rojo); font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; }
+  .resumen-row .rv.rojo {
+    color: var(--rojo);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700;
+  }
 
   .periodo-select {
-    display: flex; gap: 8px; margin-bottom: 24px;
+    display: flex; gap: 8px; margin-bottom: 20px;
   }
 
   .periodo-btn {
     background: rgba(14,30,53,0.85);
     border: 1px solid var(--azul-borde);
     color: var(--texto-suave); border-radius: 6px;
-    padding: 7px 16px; font-size: 10px; cursor: pointer;
+    padding: 6px 14px; font-size: 10px; cursor: pointer;
     transition: all 0.2s; letter-spacing: 2px; text-transform: uppercase;
     font-family: 'Barlow', sans-serif;
   }
 
   .periodo-btn.active { border-color: var(--rojo); color: var(--rojo); background: rgba(232,25,44,0.06); }
-  .periodo-btn:hover { border-color: #254a70; color: var(--blanco); }
+  .periodo-btn:hover:not(.active) { border-color: #254a70; color: var(--blanco); }
+
+  /* ── PRECIOS TAB ─────────────────────────────────────────── */
+  .precios-seccion {
+    margin-bottom: 24px;
+  }
+
+  .precios-seccion h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 4px; color: var(--texto-suave);
+    text-transform: uppercase; margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--azul-borde);
+  }
+
+  .precios-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+
+  .precio-card {
+    background: rgba(14,30,53,0.85);
+    border: 1px solid var(--azul-borde);
+    border-radius: 12px; padding: 16px;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.2s;
+  }
+
+  .precio-card:hover { border-color: #254a70; }
+
+  .precio-card .pc-nombre {
+    font-size: 10px; color: var(--texto-suave);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 10px;
+  }
+
+  .precio-card .pc-input-wrap {
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .precio-card .pc-signo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--rojo);
+  }
+
+  .precio-card input[type="number"] {
+    background: rgba(10,22,40,0.8);
+    border: 1px solid var(--azul-borde);
+    border-radius: 7px; padding: 8px 10px;
+    color: var(--blanco); font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; outline: none;
+    transition: border-color 0.2s; width: 100%;
+    -moz-appearance: textfield;
+  }
+
+  .precio-card input[type="number"]::-webkit-inner-spin-button,
+  .precio-card input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+  .precio-card input[type="number"]:focus { border-color: var(--rojo); }
+
+  .precio-card .pc-btn {
+    margin-top: 10px; width: 100%;
+    background: transparent; border: 1px solid var(--azul-borde);
+    color: var(--texto-suave); border-radius: 6px;
+    padding: 7px; font-size: 9px; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 2px; text-transform: uppercase;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .precio-card .pc-btn:hover { border-color: var(--verde); color: var(--verde); }
+  .precio-card .pc-btn.saved { border-color: var(--verde); color: var(--verde); }
+
+  .btn-guardar-todo {
+    background: var(--rojo); color: white; border: none;
+    border-radius: 8px; padding: 11px 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+    margin-bottom: 24px;
+  }
+
+  .btn-guardar-todo:hover { background: var(--rojo-hover); }
+
+  .precios-info {
+    font-size: 12px; color: var(--texto-suave);
+    margin-bottom: 20px; font-weight: 300; line-height: 1.6;
+  }
 
   .loading { color: var(--texto-suave); font-size: 13px; padding: 40px; text-align: center; }
+
+  .empty-state {
+    text-align: center; padding: 40px 20px;
+    color: var(--texto-suave); font-size: 13px;
+    font-weight: 300; letter-spacing: 1px;
+  }
 </style>
 </head>
 <body>
@@ -423,8 +630,9 @@
   </header>
 
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('calendario')">Calendario</div>
-    <div class="tab" onclick="switchTab('resumen')">Resumen</div>
+    <div class="tab active" onclick="switchTab('calendario', this)">Calendario</div>
+    <div class="tab" onclick="switchTab('resumen', this)">Resumen</div>
+    <div class="tab" onclick="switchTab('precios', this)">Precios</div>
   </div>
 
   <!-- TAB CALENDARIO -->
@@ -435,64 +643,64 @@
         <label>Fecha</label>
         <input type="date" id="filtroFecha">
       </div>
-      <div class="filtro-group">
-        <label>Cancha</label>
-        <select id="filtroCancha">
-          <option value="">Todas las canchas</option>
-          <option>Cancha 1 — F8</option>
-          <option>Cancha 2 — F8</option>
-          <option>Cancha 3 — F8</option>
-          <option>C1 Lado A — F6</option>
-          <option>C1 Lado B — F6</option>
-          <option>C2 Lado A — F6</option>
-          <option>C2 Lado B — F6</option>
-          <option>C3 Lado A — F6</option>
-          <option>C3 Lado B — F6</option>
-          <option>Pádel 1</option>
-          <option>Pádel 2</option>
-          <option>Pádel 3</option>
-        </select>
-      </div>
       <button class="btn-filtrar" onclick="cargarReservas()">BUSCAR</button>
     </div>
 
-    <div class="stats-row" id="statsRow">
-      <div class="stat-card">
-        <div class="stat-label">Reservas del día</div>
-        <div class="stat-val" id="statTotal">—</div>
+    <div class="stats-mini" id="statsMini">
+      <div class="stat-mini">
+        <div>
+          <div class="sm-label">Reservas del día</div>
+          <div class="sm-val blanco" id="statTotal">—</div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">Confirmadas</div>
-        <div class="stat-val verde" id="statConfirmadas">—</div>
+      <div class="stat-mini">
+        <div>
+          <div class="sm-label">Confirmadas</div>
+          <div class="sm-val verde" id="statConfirmadas">—</div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">Canceladas</div>
-        <div class="stat-val rojo" id="statCanceladas">—</div>
+      <div class="stat-mini">
+        <div>
+          <div class="sm-label">Canceladas</div>
+          <div class="sm-val rojo" id="statCanceladas">—</div>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">Ingresos del día</div>
-        <div class="stat-val rojo" id="statIngresos">—</div>
+      <div class="stat-mini">
+        <div>
+          <div class="sm-label">Ingresos del día</div>
+          <div class="sm-val rojo" id="statIngresos">—</div>
+        </div>
       </div>
     </div>
 
-    <div class="tabla-wrap">
-      <table>
+    <div class="leyenda">
+      <div class="leyenda-item"><div class="leyenda-dot ocupado"></div>Ocupada</div>
+      <div class="leyenda-item"><div class="leyenda-dot libre"></div>Libre</div>
+      <div class="leyenda-item"><div class="leyenda-dot cancel"></div>Cancelada</div>
+    </div>
+
+    <div class="grilla-wrap">
+      <table class="grilla-table">
         <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Deporte</th>
-            <th>Cancha</th>
+          <tr id="grillaHeader">
             <th>Horario</th>
-            <th>Precio</th>
-            <th>Estado</th>
-            <th></th>
           </tr>
         </thead>
-        <tbody id="tablaBody">
-          <tr><td colspan="7" class="empty-state">Seleccioná una fecha y hacé click en Buscar</td></tr>
+        <tbody id="grillaBody">
+          <tr><td colspan="13" class="empty-state">Seleccioná una fecha y hacé click en Buscar</td></tr>
         </tbody>
       </table>
     </div>
+
+    <!-- Panel detalle -->
+    <div id="detallePanel">
+      <div class="detalle-header">
+        <div class="detalle-title">Detalle de reserva</div>
+        <button class="btn-cancelar" id="btnCancelarDetalle" onclick="cancelarDesdeDetalle()">Cancelar reserva</button>
+      </div>
+      <div class="detalle-grid" id="detalleGrid"></div>
+    </div>
+
   </div>
 
   <!-- TAB RESUMEN -->
@@ -502,10 +710,18 @@
       <button class="periodo-btn" onclick="setPeriodo('semana', this)">Esta semana</button>
       <button class="periodo-btn" onclick="setPeriodo('mes', this)">Este mes</button>
     </div>
-
     <div class="resumen-grid" id="resumenGrid">
       <div class="loading">Cargando resumen...</div>
     </div>
+  </div>
+
+  <!-- TAB PRECIOS -->
+  <div class="tab-content" id="tab-precios">
+    <p class="precios-info">
+      Modificá el precio de cada cancha. Los cambios se aplican inmediatamente para nuevas reservas.
+    </p>
+    <button class="btn-guardar-todo" onclick="guardarTodosPrecios()">GUARDAR TODOS LOS CAMBIOS</button>
+    <div id="preciosContainer"><div class="loading">Cargando precios...</div></div>
   </div>
 
 </div>
@@ -513,129 +729,281 @@
 <script>
   const API = "https://app-complejo-deportivo-app-reserva-tu-cancha-backend.67iz4w.easypanel.host";
 
-  // Credenciales admin (en producción esto iría en el backend)
-  const ADMIN_EMAIL = "admin@picodeportes.com";
-  const ADMIN_PASS = "PicoAdmin2025";
+  const CANCHAS = [
+    { nombre: 'Cancha 1 — F8', grupo: 'Fútbol 8' },
+    { nombre: 'Cancha 2 — F8', grupo: 'Fútbol 8' },
+    { nombre: 'Cancha 3 — F8', grupo: 'Fútbol 8' },
+    { nombre: 'C1 Lado A — F6', grupo: 'Fútbol 6' },
+    { nombre: 'C1 Lado B — F6', grupo: 'Fútbol 6' },
+    { nombre: 'C2 Lado A — F6', grupo: 'Fútbol 6' },
+    { nombre: 'C2 Lado B — F6', grupo: 'Fútbol 6' },
+    { nombre: 'C3 Lado A — F6', grupo: 'Fútbol 6' },
+    { nombre: 'C3 Lado B — F6', grupo: 'Fútbol 6' },
+    { nombre: 'Pádel 1', grupo: 'Pádel' },
+    { nombre: 'Pádel 2', grupo: 'Pádel' },
+    { nombre: 'Pádel 3', grupo: 'Pádel' },
+  ];
 
-  let todasReservas = [];
+  const HORARIOS = ['18:00', '19:00', '20:00', '21:00', '22:00', '23:00'];
+
+  let token = null;
+  let reservasActuales = [];
+  let reservaSeleccionada = null;
   let periodoCurrent = 'hoy';
 
-  // LOGIN
-  function doLogin() {
+  // ── HELPERS ──────────────────────────────────────────────────────────────────
+  function authHeaders() {
+    return { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
+  }
+
+  // ── LOGIN ─────────────────────────────────────────────────────────────────────
+  async function doLogin() {
     const email = document.getElementById("loginEmail").value.trim();
     const pass = document.getElementById("loginPass").value.trim();
     const err = document.getElementById("loginError");
+    const btn = document.querySelector(".btn-login");
 
-    if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
-      document.getElementById("loginScreen").style.display = "none";
-      document.getElementById("appScreen").style.display = "block";
-      // Set today's date
-      const hoy = new Date();
-      document.getElementById("filtroFecha").value = hoy.toISOString().split("T")[0];
-      cargarReservas();
-      cargarResumen('hoy');
-    } else {
+    btn.textContent = "...";
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`${API}/admin/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: pass })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.token) {
+        token = data.token;
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("appScreen").style.display = "block";
+        const hoy = new Date();
+        document.getElementById("filtroFecha").value = hoy.toISOString().split("T")[0];
+        cargarReservas();
+        cargarResumen('hoy');
+        cargarPrecios();
+      } else {
+        err.style.display = "block";
+        setTimeout(() => err.style.display = "none", 3000);
+      }
+    } catch(e) {
+      err.textContent = "Error de conexión con el servidor";
       err.style.display = "block";
-      setTimeout(() => err.style.display = "none", 3000);
+      setTimeout(() => { err.style.display = "none"; err.textContent = "Email o contraseña incorrectos"; }, 3000);
     }
+
+    btn.textContent = "INGRESAR";
+    btn.disabled = false;
   }
 
-  function logout() {
+  async function logout() {
+    try {
+      await fetch(`${API}/admin/logout`, { method: 'POST', headers: authHeaders() });
+    } catch(e) {}
+    token = null;
+    reservasActuales = [];
     document.getElementById("loginScreen").style.display = "flex";
     document.getElementById("appScreen").style.display = "none";
     document.getElementById("loginEmail").value = "";
     document.getElementById("loginPass").value = "";
   }
 
-  // TABS
-  function switchTab(tab) {
+  // ── TABS ──────────────────────────────────────────────────────────────────────
+  function switchTab(tab, el) {
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
     document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
-    event.target.classList.add("active");
+    el.classList.add("active");
     document.getElementById("tab-" + tab).classList.add("active");
     if (tab === "resumen") cargarResumen(periodoCurrent);
+    if (tab === "precios") cargarPrecios();
   }
 
-  // CARGAR RESERVAS
+  // ── FECHA HELPER ──────────────────────────────────────────────────────────────
+  function fechaISO_a_texto(fechaISO) {
+    // Convierte "2025-02-23" → "Domingo 23 de febrero"
+    const d = new Date(fechaISO + "T00:00:00");
+    const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+    const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+    return `${dias[d.getDay()]} ${d.getDate()} de ${meses[d.getMonth()]}`;
+  }
+
+  // ── CARGAR RESERVAS / GRILLA ──────────────────────────────────────────────────
   async function cargarReservas() {
     const fecha = document.getElementById("filtroFecha").value;
-    const cancha = document.getElementById("filtroCancha").value;
-    const body = document.getElementById("tablaBody");
-    body.innerHTML = `<tr><td colspan="7" class="empty-state">Cargando...</td></tr>`;
+    const body = document.getElementById("grillaBody");
+    body.innerHTML = `<tr><td colspan="${CANCHAS.length + 1}" class="empty-state">Cargando...</td></tr>`;
+    ocultarDetalle();
 
     try {
-      const res = await fetch(`${API}/reservas`);
-      todasReservas = await res.json();
+      const res = await fetch(`${API}/reservas`, { headers: authHeaders() });
+      if (res.status === 401) { logout(); return; }
+      const todas = await res.json();
+      reservasActuales = todas;
 
-      let filtradas = todasReservas;
-
+      let filtradas = todas;
       if (fecha) {
-        // Filtrar por fecha - convertir fecha ISO a formato legible para comparar
-        const d = new Date(fecha + "T00:00:00");
-        const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-        const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-        const fechaStr = `${dias[d.getDay()]} ${d.getDate()} de ${meses[d.getMonth()]}`;
-        filtradas = filtradas.filter(r => r.fecha === fechaStr);
+        const fechaTexto = fechaISO_a_texto(fecha);
+        filtradas = filtradas.filter(r => r.fecha === fechaTexto);
       }
-
-      if (cancha) {
-        filtradas = filtradas.filter(r => r.cancha === cancha);
-      }
-
-      // Ordenar por horario
-      filtradas.sort((a, b) => a.horario.localeCompare(b.horario));
 
       // Stats
-      const confirmadas = filtradas.filter(r => r.estado !== "cancelada");
-      const canceladas = filtradas.filter(r => r.estado === "cancelada");
-      const ingresos = confirmadas.reduce((sum, r) => sum + (r.precio || 0), 0);
+      const confirmadas = filtradas.filter(r => r.estado !== 'cancelada');
+      const canceladas = filtradas.filter(r => r.estado === 'cancelada');
+      const ingresos = confirmadas.reduce((s, r) => s + (r.precio || 0), 0);
 
       document.getElementById("statTotal").textContent = filtradas.length;
       document.getElementById("statConfirmadas").textContent = confirmadas.length;
       document.getElementById("statCanceladas").textContent = canceladas.length;
-      document.getElementById("statIngresos").textContent = "$" + ingresos.toLocaleString();
+      document.getElementById("statIngresos").textContent = "$" + ingresos.toLocaleString('es-AR');
 
-      if (filtradas.length === 0) {
-        body.innerHTML = `<tr><td colspan="7" class="empty-state">No hay reservas para esta búsqueda</td></tr>`;
+      // Construir header grilla
+      const header = document.getElementById("grillaHeader");
+      header.innerHTML = `<th>Horario</th>` + CANCHAS.map(c =>
+        `<th title="${c.nombre}">${c.nombre.replace(' — ', '\n')}</th>`
+      ).join('');
+
+      if (filtradas.length === 0 && fecha) {
+        body.innerHTML = `<tr><td colspan="${CANCHAS.length + 1}" class="empty-state">No hay reservas para este día</td></tr>`;
         return;
       }
 
-      body.innerHTML = filtradas.map(r => `
-        <tr class="${r.estado === 'cancelada' ? 'cancelada' : ''}">
-          <td>
-            <div class="nombre">${r.nombre} ${r.apellido}</div>
-            <div class="wsp">${r.whatsapp}</div>
-          </td>
-          <td><span class="badge-deporte ${r.deporte === 'Fútbol' ? 'badge-futbol' : 'badge-padel'}">${r.deporte}</span></td>
-          <td>${r.cancha}</td>
-          <td>${r.horario} hs</td>
-          <td>$${(r.precio || 0).toLocaleString()}</td>
-          <td><span class="badge-estado ${r.estado === 'cancelada' ? 'badge-cancelada' : 'badge-confirmada'}">${r.estado === 'cancelada' ? 'Cancelada' : 'Confirmada'}</span></td>
-          <td>${r.estado !== 'cancelada' ? `<button class="btn-cancelar" onclick="cancelarReserva(${r.id}, this)">Cancelar</button>` : '—'}</td>
+      if (!fecha) {
+        body.innerHTML = `<tr><td colspan="${CANCHAS.length + 1}" class="empty-state">Seleccioná una fecha y hacé click en Buscar</td></tr>`;
+        return;
+      }
+
+      // Construir mapa: horario+cancha → reserva
+      const mapa = {};
+      filtradas.forEach(r => {
+        const key = `${r.horario}||${r.cancha}`;
+        mapa[key] = r;
+      });
+
+      // Render filas
+      body.innerHTML = HORARIOS.map(h => `
+        <tr>
+          <td>${h} hs</td>
+          ${CANCHAS.map(c => {
+            const key = `${h}||${c.nombre}`;
+            const r = mapa[key];
+            if (!r) {
+              return `<td><div class="celda libre">·</div></td>`;
+            }
+            if (r.estado === 'cancelada') {
+              return `<td><div class="celda cancelada-cell">✕</div></td>`;
+            }
+            return `<td>
+              <div class="celda ocupada" onclick="seleccionarCelda(${r.id})" id="celda-${r.id}">
+                <div class="celda-nombre">${r.nombre}</div>
+                <div class="celda-deporte">${r.deporte}</div>
+              </div>
+            </td>`;
+          }).join('')}
         </tr>
       `).join('');
 
     } catch(e) {
-      body.innerHTML = `<tr><td colspan="7" class="empty-state">Error al cargar reservas. Verificá la conexión.</td></tr>`;
+      body.innerHTML = `<tr><td colspan="${CANCHAS.length + 1}" class="empty-state">Error al cargar. Verificá la conexión.</td></tr>`;
     }
   }
 
-  // CANCELAR
-  async function cancelarReserva(id, btn) {
-    if (!confirm("¿Cancelar esta reserva?")) return;
+  // ── SELECCIONAR CELDA → MOSTRAR DETALLE ───────────────────────────────────────
+  function seleccionarCelda(id) {
+    const r = reservasActuales.find(x => x.id === id);
+    if (!r) return;
+
+    // Desmarcar anterior
+    document.querySelectorAll('.celda.seleccionada').forEach(c => c.classList.remove('seleccionada'));
+
+    // Marcar nueva
+    const el = document.getElementById(`celda-${id}`);
+    if (el) el.classList.add('seleccionada');
+
+    reservaSeleccionada = r;
+    mostrarDetalle(r);
+  }
+
+  function mostrarDetalle(r) {
+    const panel = document.getElementById('detallePanel');
+    const grid = document.getElementById('detalleGrid');
+    const btnCancelar = document.getElementById('btnCancelarDetalle');
+
+    const esCancelada = r.estado === 'cancelada';
+    btnCancelar.style.display = esCancelada ? 'none' : 'inline-block';
+    btnCancelar.disabled = false;
+    btnCancelar.textContent = 'Cancelar reserva';
+
+    grid.innerHTML = `
+      <div class="detalle-item">
+        <div class="di-label">Cliente</div>
+        <div class="di-val">${r.nombre} ${r.apellido}</div>
+      </div>
+      <div class="detalle-item">
+        <div class="di-label">WhatsApp</div>
+        <div class="di-val di-wsp">${r.whatsapp}</div>
+      </div>
+      <div class="detalle-item">
+        <div class="di-label">Deporte</div>
+        <div class="di-val">${r.deporte}</div>
+      </div>
+      <div class="detalle-item">
+        <div class="di-label">Cancha</div>
+        <div class="di-val">${r.cancha}</div>
+      </div>
+      <div class="detalle-item">
+        <div class="di-label">Horario</div>
+        <div class="di-val">${r.horario} hs</div>
+      </div>
+      <div class="detalle-item">
+        <div class="di-label">Precio</div>
+        <div class="di-val">$${(r.precio || 0).toLocaleString('es-AR')}</div>
+      </div>
+      <div class="detalle-item">
+        <div class="di-label">Estado</div>
+        <div class="di-val">
+          <span class="badge-estado ${esCancelada ? 'badge-cancelada' : 'badge-confirmada'}">
+            ${esCancelada ? 'Cancelada' : 'Confirmada'}
+          </span>
+        </div>
+      </div>
+    `;
+
+    panel.style.display = 'block';
+  }
+
+  function ocultarDetalle() {
+    document.getElementById('detallePanel').style.display = 'none';
+    reservaSeleccionada = null;
+    document.querySelectorAll('.celda.seleccionada').forEach(c => c.classList.remove('seleccionada'));
+  }
+
+  // ── CANCELAR DESDE DETALLE ────────────────────────────────────────────────────
+  async function cancelarDesdeDetalle() {
+    if (!reservaSeleccionada) return;
+    if (!confirm(`¿Cancelar la reserva de ${reservaSeleccionada.nombre} ${reservaSeleccionada.apellido}?`)) return;
+
+    const btn = document.getElementById('btnCancelarDetalle');
     btn.disabled = true;
-    btn.textContent = "...";
+    btn.textContent = '...';
+
     try {
-      await fetch(`${API}/cancelar/${id}`, { method: "POST" });
+      const res = await fetch(`${API}/cancelar/${reservaSeleccionada.id}`, {
+        method: 'POST',
+        headers: authHeaders()
+      });
+      if (res.status === 401) { logout(); return; }
+      ocultarDetalle();
       cargarReservas();
     } catch(e) {
       btn.disabled = false;
-      btn.textContent = "Cancelar";
-      alert("Error al cancelar");
+      btn.textContent = 'Cancelar reserva';
+      alert('Error al cancelar');
     }
   }
 
-  // RESUMEN
+  // ── RESUMEN ───────────────────────────────────────────────────────────────────
   function setPeriodo(periodo, el) {
     document.querySelectorAll(".periodo-btn").forEach(b => b.classList.remove("active"));
     el.classList.add("active");
@@ -648,35 +1016,33 @@
     grid.innerHTML = `<div class="loading">Cargando resumen...</div>`;
 
     try {
-      const res = await fetch(`${API}/reservas`);
+      const res = await fetch(`${API}/reservas`, { headers: authHeaders() });
+      if (res.status === 401) { logout(); return; }
       const todas = await res.json();
 
       const hoy = new Date();
-      let filtradas = todas.filter(r => r.estado !== "cancelada");
+      let filtradas = todas.filter(r => r.estado !== 'cancelada');
 
-      if (periodo === "hoy") {
-        const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-        const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-        const fechaHoy = `${dias[hoy.getDay()]} ${hoy.getDate()} de ${meses[hoy.getMonth()]}`;
+      if (periodo === 'hoy') {
+        const fechaHoy = fechaISO_a_texto(hoy.toISOString().split('T')[0]);
         filtradas = filtradas.filter(r => r.fecha === fechaHoy);
-      } else if (periodo === "semana") {
+      } else if (periodo === 'semana') {
         const hace7 = new Date(hoy); hace7.setDate(hoy.getDate() - 7);
         filtradas = filtradas.filter(r => new Date(r.fecha_creacion) >= hace7);
-      } else if (periodo === "mes") {
+      } else if (periodo === 'mes') {
         const hace30 = new Date(hoy); hace30.setDate(hoy.getDate() - 30);
         filtradas = filtradas.filter(r => new Date(r.fecha_creacion) >= hace30);
       }
 
       const ingresos = filtradas.reduce((s, r) => s + (r.precio || 0), 0);
-      const futbol = filtradas.filter(r => r.deporte === "Fútbol").length;
-      const padel = filtradas.filter(r => r.deporte === "Pádel").length;
+      const futbol = filtradas.filter(r => r.deporte === 'Fútbol').length;
+      const padel = filtradas.filter(r => r.deporte === 'Pádel').length;
 
-      // Cancha más reservada
       const porCancha = {};
       filtradas.forEach(r => { porCancha[r.cancha] = (porCancha[r.cancha] || 0) + 1; });
-      const topCancha = Object.entries(porCancha).sort((a,b) => b[1]-a[1])[0];
+      const topCancha = Object.entries(porCancha).sort((a, b) => b[1] - a[1])[0];
 
-      const labels = { hoy: "hoy", semana: "esta semana", mes: "este mes" };
+      const labels = { hoy: 'hoy', semana: 'esta semana', mes: 'este mes' };
 
       grid.innerHTML = `
         <div class="resumen-card">
@@ -688,14 +1054,122 @@
         </div>
         <div class="resumen-card">
           <h3>Ingresos ${labels[periodo]}</h3>
-          <div class="resumen-row"><span class="rl">Total ingresos</span><span class="rv rojo">$${ingresos.toLocaleString()}</span></div>
-          <div class="resumen-row"><span class="rl">Promedio por reserva</span><span class="rv">$${filtradas.length ? Math.round(ingresos/filtradas.length).toLocaleString() : 0}</span></div>
-          <div class="resumen-row"><span class="rl">Ingreso fútbol</span><span class="rv">$${filtradas.filter(r=>r.deporte==="Fútbol").reduce((s,r)=>s+(r.precio||0),0).toLocaleString()}</span></div>
-          <div class="resumen-row"><span class="rl">Ingreso pádel</span><span class="rv">$${filtradas.filter(r=>r.deporte==="Pádel").reduce((s,r)=>s+(r.precio||0),0).toLocaleString()}</span></div>
+          <div class="resumen-row"><span class="rl">Total ingresos</span><span class="rv rojo">$${ingresos.toLocaleString('es-AR')}</span></div>
+          <div class="resumen-row"><span class="rl">Promedio por reserva</span><span class="rv">$${filtradas.length ? Math.round(ingresos / filtradas.length).toLocaleString('es-AR') : 0}</span></div>
+          <div class="resumen-row"><span class="rl">Ingreso fútbol</span><span class="rv">$${filtradas.filter(r => r.deporte === 'Fútbol').reduce((s, r) => s + (r.precio || 0), 0).toLocaleString('es-AR')}</span></div>
+          <div class="resumen-row"><span class="rl">Ingreso pádel</span><span class="rv">$${filtradas.filter(r => r.deporte === 'Pádel').reduce((s, r) => s + (r.precio || 0), 0).toLocaleString('es-AR')}</span></div>
         </div>
       `;
     } catch(e) {
       grid.innerHTML = `<div class="loading">Error al cargar resumen</div>`;
+    }
+  }
+
+  // ── PRECIOS ───────────────────────────────────────────────────────────────────
+  let preciosActuales = {};
+
+  async function cargarPrecios() {
+    const container = document.getElementById('preciosContainer');
+    container.innerHTML = `<div class="loading">Cargando precios...</div>`;
+
+    try {
+      const res = await fetch(`${API}/precios`);
+      preciosActuales = await res.json();
+      renderPrecios();
+    } catch(e) {
+      container.innerHTML = `<div class="loading">Error al cargar precios</div>`;
+    }
+  }
+
+  function renderPrecios() {
+    const container = document.getElementById('preciosContainer');
+    const grupos = {};
+    CANCHAS.forEach(c => {
+      if (!grupos[c.grupo]) grupos[c.grupo] = [];
+      grupos[c.grupo].push(c.nombre);
+    });
+
+    container.innerHTML = Object.entries(grupos).map(([grupo, canchas]) => `
+      <div class="precios-seccion">
+        <h3>${grupo}</h3>
+        <div class="precios-grid">
+          ${canchas.map(c => `
+            <div class="precio-card">
+              <div class="pc-nombre">${c}</div>
+              <div class="pc-input-wrap">
+                <span class="pc-signo">$</span>
+                <input type="number" id="precio-${encodeId(c)}" value="${preciosActuales[c] || 8000}" min="0" step="500">
+              </div>
+              <button class="pc-btn" onclick="guardarPrecio('${c}', this)">Guardar</button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function encodeId(str) {
+    return str.replace(/[^a-zA-Z0-9]/g, '_');
+  }
+
+  async function guardarPrecio(cancha, btn) {
+    const input = document.getElementById(`precio-${encodeId(cancha)}`);
+    const precio = parseInt(input.value);
+    if (isNaN(precio) || precio < 0) { alert('Precio inválido'); return; }
+
+    btn.textContent = '...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`${API}/admin/precios`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify({ cancha, precio })
+      });
+      if (res.status === 401) { logout(); return; }
+      preciosActuales[cancha] = precio;
+      btn.textContent = '✓ Guardado';
+      btn.classList.add('saved');
+      setTimeout(() => {
+        btn.textContent = 'Guardar';
+        btn.classList.remove('saved');
+        btn.disabled = false;
+      }, 2000);
+    } catch(e) {
+      alert('Error al guardar precio');
+      btn.textContent = 'Guardar';
+      btn.disabled = false;
+    }
+  }
+
+  async function guardarTodosPrecios() {
+    const btn = document.querySelector('.btn-guardar-todo');
+    btn.textContent = 'Guardando...';
+    btn.disabled = true;
+
+    const promesas = CANCHAS.map(c => {
+      const input = document.getElementById(`precio-${encodeId(c.nombre)}`);
+      if (!input) return Promise.resolve();
+      const precio = parseInt(input.value);
+      if (isNaN(precio) || precio < 0) return Promise.resolve();
+      return fetch(`${API}/admin/precios`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify({ cancha: c.nombre, precio })
+      });
+    });
+
+    try {
+      await Promise.all(promesas);
+      btn.textContent = '✓ Todos guardados';
+      setTimeout(() => {
+        btn.textContent = 'GUARDAR TODOS LOS CAMBIOS';
+        btn.disabled = false;
+      }, 2000);
+    } catch(e) {
+      alert('Error al guardar algún precio');
+      btn.textContent = 'GUARDAR TODOS LOS CAMBIOS';
+      btn.disabled = false;
     }
   }
 </script>
