@@ -89,8 +89,8 @@
   .deporte-card:hover::before { transform: scaleX(0.4); }
   .deporte-card.selected { border-color: var(--rojo); background: rgba(232,25,44,0.07); }
   .deporte-card.selected::before { transform: scaleX(1); }
-  .deporte-icon { width: 60px; height: 60px; margin: 0 auto 14px; }
-  .deporte-icon svg { width: 100%; height: 100%; }
+  .deporte-icon { width: 68px; height: 68px; margin: 0 auto 14px; }
+  .deporte-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
   .deporte-card .nombre { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; }
 
   .cancha-section { margin-bottom: 48px; display: none; }
@@ -229,25 +229,7 @@
 
       <div class="deporte-card" onclick="selDeporte(this, 'Fútbol')">
         <div class="deporte-icon">
-          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="26" stroke="white" stroke-width="1.8"/>
-            <polygon points="30,15 38.5,21 35.5,31 24.5,31 21.5,21" fill="white"/>
-            <line x1="30" y1="15" x2="21.5" y2="21" stroke="white" stroke-width="1.4"/>
-            <line x1="30" y1="15" x2="38.5" y2="21" stroke="white" stroke-width="1.4"/>
-            <line x1="38.5" y1="21" x2="35.5" y2="31" stroke="white" stroke-width="1.4"/>
-            <line x1="35.5" y1="31" x2="24.5" y2="31" stroke="white" stroke-width="1.4"/>
-            <line x1="24.5" y1="31" x2="21.5" y2="21" stroke="white" stroke-width="1.4"/>
-            <line x1="30" y1="15" x2="26" y2="5" stroke="white" stroke-width="1.4"/>
-            <line x1="30" y1="15" x2="34" y2="5" stroke="white" stroke-width="1.4"/>
-            <line x1="38.5" y1="21" x2="47" y2="18" stroke="white" stroke-width="1.4"/>
-            <line x1="38.5" y1="21" x2="49" y2="26" stroke="white" stroke-width="1.4"/>
-            <line x1="35.5" y1="31" x2="42" y2="37" stroke="white" stroke-width="1.4"/>
-            <line x1="35.5" y1="31" x2="38" y2="42" stroke="white" stroke-width="1.4"/>
-            <line x1="24.5" y1="31" x2="22" y2="42" stroke="white" stroke-width="1.4"/>
-            <line x1="24.5" y1="31" x2="18" y2="37" stroke="white" stroke-width="1.4"/>
-            <line x1="21.5" y1="21" x2="11" y2="26" stroke="white" stroke-width="1.4"/>
-            <line x1="21.5" y1="21" x2="13" y2="18" stroke="white" stroke-width="1.4"/>
-          </svg>
+          <img src="icono_futbol.png" alt="Fútbol">
         </div>
         <div class="nombre">Fútbol</div>
         <div class="canchas">3 canchas · F8 y F6</div>
@@ -255,29 +237,7 @@
 
       <div class="deporte-card" onclick="selDeporte(this, 'Pádel')">
         <div class="deporte-icon">
-          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="46" cy="11" r="5.5" fill="white"/>
-            <g transform="rotate(25 30 30)">
-              <rect x="19" y="7" width="17" height="23" rx="8.5" fill="none" stroke="white" stroke-width="1.8"/>
-              <rect x="25.5" y="29" width="4" height="13" rx="2" fill="none" stroke="white" stroke-width="1.8"/>
-            </g>
-            <g transform="rotate(-18 30 30)">
-              <rect x="21" y="7" width="17" height="23" rx="8.5" fill="white"/>
-              <circle cx="26" cy="13" r="1.4" fill="#0a1628"/>
-              <circle cx="30" cy="13" r="1.4" fill="#0a1628"/>
-              <circle cx="34" cy="13" r="1.4" fill="#0a1628"/>
-              <circle cx="26" cy="18" r="1.4" fill="#0a1628"/>
-              <circle cx="30" cy="18" r="1.4" fill="#0a1628"/>
-              <circle cx="34" cy="18" r="1.4" fill="#0a1628"/>
-              <circle cx="26" cy="23" r="1.4" fill="#0a1628"/>
-              <circle cx="30" cy="23" r="1.4" fill="#0a1628"/>
-              <circle cx="34" cy="23" r="1.4" fill="#0a1628"/>
-              <rect x="27.5" y="29" width="4" height="13" rx="2" fill="white"/>
-              <line x1="27.5" y1="33" x2="31.5" y2="33" stroke="#0a1628" stroke-width="1"/>
-              <line x1="27.5" y1="36.5" x2="31.5" y2="36.5" stroke="#0a1628" stroke-width="1"/>
-              <line x1="27.5" y1="40" x2="31.5" y2="40" stroke="#0a1628" stroke-width="1"/>
-            </g>
-          </svg>
+          <img src="icono_padel.png" alt="Pádel">
         </div>
         <div class="nombre">Pádel</div>
         <div class="canchas">3 canchas dobles · Interior</div>
